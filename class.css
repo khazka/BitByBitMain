@@ -1,0 +1,128 @@
+main{
+    
+    display:grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 10px 10px;
+    column-gap: 50px;
+}
+.tab{
+    
+    background-color: rgb(85, 85, 85);
+    height: 100vh;
+    position: sticky;
+}
+.body{
+   
+    height: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    gap: 10px 10px;
+}
+.types{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.content{
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 25px;
+    column-gap: 150px;
+    padding-right: 50px;
+    
+}
+.subject{
+    height: 210px;
+    border-radius: 10px;
+    border-width: medium;
+    border-color: rgb(0, 255, 183);
+    border-style: solid;
+    display: flex;
+}
+.red0box{
+    background-color:rgb(85, 85, 85);
+    height: 150px;
+    width: 150px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sec1{
+    width: 50%;
+    height: 100%;
+   
+}
+.sec2{
+    width: 50%;
+    height: 100%;
+    padding: 10px; 
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgb(0, 176, 126);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+ /* Searchbar */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f5f7;
+  padding: 10px 16px;
+  border-radius: 700px;
+  width: 250px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.search:focus-within {
+  background: white;
+  border: 1px solid #007bff;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+.search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 16px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: #888;
+}
+/* dropdowns */
+.drop{
+     appearance: none;           
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 250px;
+  padding: 12px 40px 12px 16px;
+  font-size: 15px;
+
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f9f9fb;
+  color: #333;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  /* custom arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+}
