@@ -8,53 +8,6 @@
   height: calc(100vh - var(--nav-height));
 }
 
-/* ---- Inner Sidebar (subject channels) ---- */
-.classroom-sidebar {
-  width: 220px;
-  background: #111;
-  padding: 16px 0;
-  flex-shrink: 0;
-  overflow-y: auto;
-}
-.classroom-sidebar-header {
-  padding: 0 14px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 8px;
-}
-.classroom-sidebar-header h3 {
-  font-family: 'Sora', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-}
-.classroom-sidebar-header p {
-  font-size: 11px;
-  color: rgba(255,255,255,0.35);
-}
-.channel-section-label {
-  padding: 10px 14px 4px;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.35);
-}
-.class-ch {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  cursor: pointer;
-  border-radius: 6px;
-  margin: 1px 6px;
-  transition: background 0.15s;
-}
-.class-ch:hover { background: rgba(255,255,255,0.07); }
-.class-ch.active { background: rgba(96,159,138,0.22); }
-.class-ch svg { width: 15px; height: 15px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
-.class-ch span { font-size: 13.5px; color: rgba(255,255,255,0.65); }
-.class-ch.active span { color: white; }
-
 /* ---- Main content ---- */
 .classroom-main {
   flex: 1;
