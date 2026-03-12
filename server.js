@@ -12,6 +12,7 @@ app.get('/space', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/
 app.get('/classroom', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/classroom.html')));
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/notes.html')));
 app.get('/chat', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/chat.html')));
+app.get('/profile', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/profile.html')));
 
 app.listen(PORT, () => {
   console.log(`\n🟢 bitBuddy running at http://localhost:${PORT}\n`);

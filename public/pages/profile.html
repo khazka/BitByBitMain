@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+
+<div id="app-shell">
+
+  <div class="profile-layout">
+
+    <!-- ===== HEADER CARD ===== -->
+    <div class="profile-header-card">
+      <div class="profile-banner">
+        <button class="profile-banner-edit">✏️ Edit Banner</button>
+      </div>
+      <div class="profile-info-row">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profile-avatar-display">JD</div>
+          <div class="avatar-edit-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-details">
+          <div class="profile-name" id="display-name">Jamie Davidson</div>
+          <div class="profile-handle" id="display-handle">@jamied · Year 10</div>
+          <div class="profile-badges">
+            <span class="profile-badge badge-green">🎓 Student</span>
+            <span class="profile-badge badge-gold">⭐ Top Contributor</span>
+            <span class="profile-badge badge-gray">📅 Joined Jan 2025</span>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="edit-profile-btn" id="btn-edit-profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            Edit Profile
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STATS ROW ===== -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">47</div>
+        <div class="stat-label">Posts Made</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">312</div>
+        <div class="stat-label">Upvotes Received</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">18</div>
+        <div class="stat-label">Days Streak 🔥</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1,240</div>
+        <div class="stat-label">Buddy Points ⭐</div>
+      </div>
+    </div>
+
+    <!-- ===== BODY GRID ===== -->
+    <div class="profile-body">
+
+      <!-- About -->
+      <div class="section-card">
+        <div class="section-title">
+          About Me
+          <button class="section-edit-link" id="btn-edit-bio">Edit</button>
+        </div>
+        <p class="bio-text" id="display-bio">
+          Year 10 student passionate about Maths and Physics. I love sharing study tips and helping classmates understand tricky concepts. aiming for all 9s in my GCSEs! 📚
+        </p>
+        <div class="bio-meta">
+          <div class="bio-meta-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            <span><strong>School:</strong> Greenfield Academy</span>
+          </div>
+          <div class="bio-meta-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span><strong>Year Group:</strong> Year 10</span>
+          </div>
+          <div class="bio-meta-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            <span><strong>Member since:</strong> January 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subjects -->
+      <div class="section-card">
+        <div class="section-title">
+          My Subjects
+          <button class="section-edit-link">Edit</button>
+        </div>
+        <div class="subjects-grid">
+          <span class="subject-chip" style="background:#e8f4f0;color:#4a7d6e;">⚛️ Physics</span>
+          <span class="subject-chip" style="background:#e8eef8;color:#3d5d82;">📐 Maths</span>
+          <span class="subject-chip" style="background:#f3e8f8;color:#6a3d82;">🧬 Biology</span>
+          <span class="subject-chip" style="background:#f8f0e8;color:#7a5030;">⚗️ Chemistry</span>
+          <span class="subject-chip" style="background:#e8f8ee;color:#2d6e5e;">💻 Comp Sci</span>
+          <span class="subject-chip" style="background:#fdf3e8;color:#92400e;">📖 English</span>
+        </div>
+      </div>
+
+      <!-- Study Streak -->
+      <div class="section-card">
+        <div class="section-title">Study Streak</div>
+        <div class="streak-display">
+          <div class="streak-flame">🔥</div>
+          <div>
+            <div class="streak-count">18</div>
+            <div class="streak-label">days in a row</div>
+          </div>
+        </div>
+        <div class="streak-days">
+          <div class="day-dot done">M</div>
+          <div class="day-dot done">T</div>
+          <div class="day-dot done">W</div>
+          <div class="day-dot done">T</div>
+          <div class="day-dot done">F</div>
+          <div class="day-dot today">S</div>
+          <div class="day-dot">S</div>
+        </div>
+      </div>
+
+      <!-- Buddy Points -->
+      <div class="section-card">
+        <div class="section-title">Buddy Points</div>
+        <div class="points-row">
+          <div class="points-icon">⭐</div>
+          <div>
+            <div class="points-number">1,240</div>
+            <div class="points-label">Total points earned</div>
+          </div>
+        </div>
+        <div class="points-bar-wrap">
+          <div class="points-bar-label">
+            <span>Gold Tier</span>
+            <span>1,240 / 2,000 pts</span>
+          </div>
+          <div class="points-bar">
+            <div class="points-bar-fill" style="width: 62%;"></div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);">760 points until Platinum Tier 🏆</div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="section-card">
+        <div class="section-title">Recent Activity</div>
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-icon" style="background:#e8f4f0;">📝</div>
+            <div class="activity-text">
+              <div class="activity-title">Posted: "The trick for solving quadratics..."</div>
+              <div class="activity-time">2 hours ago · 128 upvotes</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon" style="background:#fef3c7;">⭐</div>
+            <div class="activity-text">
+              <div class="activity-title">Earned 50 Buddy Points for helpful reply</div>
+              <div class="activity-time">Yesterday</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon" style="background:#e8eef8;">📚</div>
+            <div class="activity-text">
+              <div class="activity-title">Saved note: "Physics: Newton's Laws"</div>
+              <div class="activity-time">Yesterday, 2:14 PM</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon" style="background:#f3e8f8;">💬</div>
+            <div class="activity-text">
+              <div class="activity-title">Replied in #homework-help</div>
+              <div class="activity-time">2 days ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enrolled Classrooms -->
+      <div class="section-card">
+        <div class="section-title">
+          My Classrooms
+          <a href="/classroom" style="font-size:12px;color:var(--primary);font-weight:500;text-decoration:none;">View All →</a>
+        </div>
+        <div class="enrolled-list">
+          <a href="/classroom" class="enrolled-item">
+            <div class="enrolled-icon" style="background:#609F8A">Ma</div>
+            <div>
+              <div class="enrolled-name">GCSE Mathematics</div>
+              <div class="enrolled-sub">Year 10 · 312 students</div>
+            </div>
+            <div class="enrolled-progress">78%</div>
+          </a>
+          <a href="/classroom" class="enrolled-item">
+            <div class="enrolled-icon" style="background:#609F8A">Ph</div>
+            <div>
+              <div class="enrolled-name">Introduction to Physics</div>
+              <div class="enrolled-sub">Year 10 · 203 students</div>
+            </div>
+            <div class="enrolled-progress">61%</div>
+          </a>
+          <a href="/classroom" class="enrolled-item">
+            <div class="enrolled-icon" style="background:#2d6e5e">CS</div>
+            <div>
+              <div class="enrolled-name">Computer Science</div>
+              <div class="enrolled-sub">Year 10 · 156 students</div>
+            </div>
+            <div class="enrolled-progress">45%</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== EDIT PROFILE MODAL ===== -->
+<div class="modal-overlay hidden" id="edit-modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Edit Profile</h3>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Full Name</label>
+      <input class="form-input" id="edit-name" type="text" value="Jamie Davidson">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input class="form-input" id="edit-username" type="text" value="jamied">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Year Group</label>
+      <select class="form-input" id="edit-year">
+        <option>Year 7</option>
+        <option>Year 8</option>
+        <option>Year 9</option>
+        <option selected>Year 10</option>
+        <option>Year 11</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">School</label>
+      <input class="form-input" id="edit-school" type="text" value="Greenfield Academy">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Bio</label>
+      <textarea class="form-textarea" id="edit-bio">Year 10 student passionate about Maths and Physics. I love sharing study tips and helping classmates understand tricky concepts. aiming for all 9s in my GCSEs! 📚</textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel" id="modal-cancel">Cancel</button>
+      <button class="modal-save" id="modal-save">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>

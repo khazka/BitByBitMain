@@ -36,6 +36,12 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
       label: 'Study Chat',
       href: '/chat',
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`
+    },
+    {
+      id: 'profile',
+      label: 'My Profile',
+      href: '/profile',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
     }
   ];
 
@@ -118,7 +124,7 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
             <path d="M13.73 21a2 2 0 01-3.46 0"/>
           </svg>
         </button>
-        <div class="avatar" style="width:34px;height:34px;font-size:13px;cursor:pointer;" id="topnav-avatar" title="Profile">JD</div>
+        <div class="avatar" style="width:34px;height:34px;font-size:13px;cursor:pointer;" id="topnav-avatar" title="My Profile" onclick="window.location.href='/profile'">JD</div>
       </div>
     </nav>
   `;
