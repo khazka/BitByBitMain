@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Chat — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+
+<div id="app-shell">
+
+  <div class="chat-layout">
+
+    <!-- Channel Sidebar -->
+    <div class="chat-sidebar">
+      <div class="chat-server-header">
+        <h3>Year 10 Maths</h3>
+        <p>142 members online</p>
+      </div>
+
+      <div class="channel-label">Text Channels</div>
+      <div class="chat-channel active" data-channel="general">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>general</span>
+        <span class="online-count">42</span>
+      </div>
+      <div class="chat-channel" data-channel="homework-help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>homework-help</span>
+        <span class="online-count">18</span>
+      </div>
+      <div class="chat-channel" data-channel="exam-revision">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <span>exam-revision</span>
+        <span class="online-count">31</span>
+      </div>
+      <div class="chat-channel" data-channel="resources">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        <span>resources</span>
+      </div>
+
+      <div class="channel-label" style="margin-top:12px;">Voice Channels</div>
+      <div class="chat-channel" data-channel="study-room-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+        <span>Study Room 1</span>
+        <span class="online-count">4</span>
+      </div>
+    </div>
+
+    <!-- Chat Main -->
+    <div class="chat-main">
+      <div class="chat-header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <h4 id="channel-title">general</h4>
+        <p>Year 10 Maths — general discussion</p>
+        <div class="online-pill">142 online</div>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+
+        <div class="chat-msg-group">
+          <div class="avatar" style="background:#5b7fa8;width:36px;height:36px;font-size:13px;">AK</div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-header">
+              <span class="chat-msg-author">Amira K.</span>
+              <span class="chat-msg-time">Today at 3:42 PM</span>
+            </div>
+            <div class="chat-bubble question-bubble">
+              Hey everyone, does anyone understand how to do simultaneous equations with 3 variables? We did it in class but I got lost after the first substitution step 😅
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-msg-group">
+          <div class="avatar" style="background:#a87c5b;width:36px;height:36px;font-size:13px;">LS</div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-header">
+              <span class="chat-msg-author">Liam S.</span>
+              <span class="chat-msg-time">Today at 3:45 PM</span>
+            </div>
+            <div class="chat-bubble">
+              Yeah it's tricky! The key is to eliminate one variable at a time. Start with any two equations and eliminate <code>z</code>, then use those two results to find <code>x</code> and <code>y</code>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-msg-group">
+          <div class="avatar" style="background:var(--primary);width:36px;height:36px;font-size:13px;">BB</div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-header">
+              <span class="chat-msg-author" style="color:var(--primary)">bitBuddy AI</span>
+              <span class="chat-msg-time">Today at 3:46 PM</span>
+            </div>
+            <div class="chat-ai-reply">
+              <div class="ai-label">✨ AI Study Help</div>
+              Great question Amira! Here's a step-by-step method for 3-variable simultaneous equations:<br><br>
+              <strong>Step 1:</strong> Pick any 2 equations, eliminate one variable<br>
+              <strong>Step 2:</strong> Pick a different pair, eliminate the same variable<br>
+              <strong>Step 3:</strong> You now have 2 equations with 2 unknowns — solve normally<br>
+              <strong>Step 4:</strong> Substitute back to find the third variable<br><br>
+              Type <strong>@bitBuddy</strong> in the chat to ask me anything! 📚
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-msg-group">
+          <div class="avatar" style="background:#609F8A;width:36px;height:36px;font-size:13px;">JD</div>
+          <div class="chat-msg-content">
+            <div class="chat-msg-header">
+              <span class="chat-msg-author">Jamie D. (You)</span>
+              <span class="chat-msg-time">Today at 3:48 PM</span>
+            </div>
+            <div class="chat-bubble">This is so helpful! @bitBuddy can you give an example with actual numbers?</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-area">
+        <div class="chat-input-row">
+          <input type="text" id="chat-input" placeholder="Message #general — type @bitBuddy for AI help">
+          <button class="send-btn" id="chat-send-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22,2 15,22 11,13 2,9"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/chat.js"></script>
+</body>
+</html>

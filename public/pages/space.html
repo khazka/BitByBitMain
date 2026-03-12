@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Space — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/space.css">
+</head>
+<body>
+
+<div id="app-shell">
+  <!-- layout.js injects sidebar + topnav, then wraps this content -->
+
+  <div class="feed-layout">
+
+    <!-- Feed Main -->
+    <div class="feed-main">
+
+      <!-- Compose -->
+      <div class="compose-box">
+        <div class="compose-row">
+          <div class="avatar" style="width:36px;height:36px;font-size:13px;">JD</div>
+          <input type="text" id="compose-input" class="compose-input" placeholder="Ask a question or share what you've learned...">
+        </div>
+        <div class="compose-actions">
+          <button class="compose-tag">📚 Add Subject</button>
+          <button class="compose-tag">🔖 Tag Topic</button>
+          <button class="compose-tag">🤖 AI Validate</button>
+          <button class="compose-post-btn" id="compose-post-btn">Post</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="feed-tabs">
+        <button class="feed-tab active" data-tab="hot">🔥 Hot</button>
+        <button class="feed-tab" data-tab="new">✨ New</button>
+        <button class="feed-tab" data-tab="top">⬆ Top</button>
+        <button class="feed-tab" data-tab="rising">📈 Rising</button>
+      </div>
+
+      <!-- Posts -->
+      <div id="feed-posts">
+
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#5b7fa8;width:36px;height:36px;font-size:13px;">AK</div>
+            <div class="post-meta">
+              <div class="post-author">Amira K. <span>· Year 11</span></div>
+              <div class="post-time">2 hours ago</div>
+            </div>
+            <span class="post-subject-tag">Physics</span>
+          </div>
+          <div class="post-title">Can someone explain Newton's 3rd Law with a real example? 🤔</div>
+          <div class="post-body">I understand "every action has an equal and opposite reaction" but I can't visualise it when solving problems. How do you apply it practically in calculations?</div>
+          <div class="post-tags">
+            <span class="post-tag">Forces</span>
+            <span class="post-tag">GCSE</span>
+            <span class="post-tag">Need Help</span>
+          </div>
+          <div class="post-footer">
+            <button class="post-action vote-btn" data-votes="47">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+              <span class="vote-count">47</span>
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              23 Replies
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16,6 12,2 8,6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              Share
+            </button>
+            <span class="ai-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              AI Validated
+            </span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#a87c5b;width:36px;height:36px;font-size:13px;">LS</div>
+            <div class="post-meta">
+              <div class="post-author">Liam S. <span>· Year 10</span></div>
+              <div class="post-time">5 hours ago</div>
+            </div>
+            <span class="post-subject-tag">Maths</span>
+          </div>
+          <div class="post-title">The trick for solving quadratics that my teacher never taught me 🔑</div>
+          <div class="post-body">Instead of always jumping to the quadratic formula, try completing the square first — it's faster and once you see the pattern, factoring becomes intuitive. Here's the step-by-step I used for my mock exam...</div>
+          <div class="post-tags">
+            <span class="post-tag">Algebra</span>
+            <span class="post-tag">GCSE</span>
+            <span class="post-tag">Study Tip</span>
+          </div>
+          <div class="post-footer">
+            <button class="post-action vote-btn" data-votes="128">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+              <span class="vote-count">128</span>
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              56 Replies
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16,6 12,2 8,6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              Share
+            </button>
+            <span class="ai-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              AI Validated
+            </span>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#609F8A;width:36px;height:36px;font-size:13px;">PO</div>
+            <div class="post-meta">
+              <div class="post-author">Priya O. <span>· Year 11</span></div>
+              <div class="post-time">Yesterday</div>
+            </div>
+            <span class="post-subject-tag">English</span>
+          </div>
+          <div class="post-title">Best quote from Macbeth covering both ambition AND guilt?</div>
+          <div class="post-body">Writing my essay on the duality of Macbeth's character. Need a quote that covers both themes for my intro paragraph — bonus points if it works for a conclusion too!</div>
+          <div class="post-tags">
+            <span class="post-tag">Shakespeare</span>
+            <span class="post-tag">GCSE</span>
+            <span class="post-tag">Essay Help</span>
+          </div>
+          <div class="post-footer">
+            <button class="post-action vote-btn" data-votes="89">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>
+              <span class="vote-count">89</span>
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              41 Replies
+            </button>
+            <button class="post-action">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16,6 12,2 8,6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              Share
+            </button>
+            <span class="ai-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              AI Validated
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Feed Sidebar -->
+    <aside class="feed-sidebar">
+      <div class="widget widget-green">
+        <h4>📢 Share Your Knowledge</h4>
+        <p>Help a fellow student and earn Buddy Points!</p>
+        <input placeholder="Ask a question...">
+        <button>Post Question</button>
+      </div>
+
+      <div class="widget">
+        <h4>📖 Study Topics</h4>
+        <ul class="topic-list">
+          <li><span class="topic-name">Computer Science</span><span class="topic-count">12.4k</span></li>
+          <li><span class="topic-name">Mathematics</span><span class="topic-count">8.2k</span></li>
+          <li><span class="topic-name">Physics</span><span class="topic-count">6.1k</span></li>
+          <li><span class="topic-name">Psychology</span><span class="topic-count">5.7k</span></li>
+          <li><span class="topic-name">English Lit</span><span class="topic-count">4.3k</span></li>
+          <li><span class="topic-name">History</span><span class="topic-count">3.9k</span></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h4>🔥 Trending Now</h4>
+        <ol class="trending-list">
+          <li>How to master Data Structures in CS</li>
+          <li>Best note-taking methods for STEM</li>
+          <li>Pomodoro vs Flowtime technique</li>
+          <li>GCSE Maths last-minute tips</li>
+        </ol>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/space.js"></script>
+</body>
+</html>

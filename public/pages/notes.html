@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Notes — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/notes.css">
+</head>
+<body>
+
+<div id="app-shell">
+
+  <div class="notes-layout">
+
+    <!-- Notes List Sidebar -->
+    <div class="notes-sidebar">
+      <div class="notes-sidebar-header">
+        <h3>My Notes</h3>
+        <button class="new-note-btn" id="btn-new-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Note
+        </button>
+      </div>
+      <div class="notes-list">
+        <div class="note-item active">
+          <div class="note-title">⚛️ Physics: Newton's Laws</div>
+          <div class="note-preview">Forces, mass and acceleration — key formulas...</div>
+          <div class="note-date">Today, 2:14 PM</div>
+        </div>
+        <div class="note-item">
+          <div class="note-title">📐 Quadratic Equations</div>
+          <div class="note-preview">Factoring, completing the square, formula...</div>
+          <div class="note-date">Yesterday</div>
+        </div>
+        <div class="note-item">
+          <div class="note-title">📖 Macbeth Essay Plan</div>
+          <div class="note-preview">Themes: ambition, guilt, power, supernatural...</div>
+          <div class="note-date">2 days ago</div>
+        </div>
+        <div class="note-item">
+          <div class="note-title">🧬 Cell Biology Notes</div>
+          <div class="note-preview">Mitosis, meiosis, DNA structure...</div>
+          <div class="note-date">3 days ago</div>
+        </div>
+        <div class="note-item">
+          <div class="note-title">🌍 Geography: Climate</div>
+          <div class="note-preview">Tropical, temperate, polar biomes...</div>
+          <div class="note-date">Last week</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editor -->
+    <div class="notes-editor">
+      <input class="note-editor-title" id="note-title" type="text" value="⚛️ Physics: Newton's Laws" placeholder="Note title...">
+      <div class="note-toolbar">
+        <button class="tool-btn" data-action="bold">Bold</button>
+        <button class="tool-btn" data-action="italic">Italic</button>
+        <button class="tool-btn" data-action="h1">H1</button>
+        <button class="tool-btn" data-action="h2">H2</button>
+        <button class="tool-btn" data-action="list">List</button>
+        <button class="tool-btn" data-action="formula">Formula</button>
+        <button class="tool-btn" data-action="code">Code</button>
+        <button class="tool-btn tool-btn-save" id="btn-save">Save</button>
+      </div>
+      <textarea class="note-content" id="note-content" placeholder="Start writing your notes...">Newton's Three Laws of Motion
+
+1st Law — The Law of Inertia
+An object at rest stays at rest, and an object in motion stays in motion, unless acted upon by an unbalanced force.
+
+KEY FORMULA: If net force = 0, then acceleration = 0
+
+2nd Law — F = ma
+The acceleration of an object depends on the net force acting on it and its mass.
+
+F = ma
+Where:
+  • F = Force (Newtons, N)
+  • m = Mass (kilograms, kg)
+  • a = Acceleration (m/s²)
+
+Example: A 5kg object with 20N of force
+  a = F/m = 20/5 = 4 m/s²
+
+3rd Law — Action & Reaction
+For every action, there is an equal and opposite reaction.
+
+Real-world example:
+When you jump off a boat, you push the boat backwards. The force you exert on the boat is equal to the force the boat exerts back on you.</textarea>
+    </div>
+
+    <!-- AI Panel -->
+    <div class="notes-ai-panel">
+      <div class="ai-panel-header">
+        <div class="ai-dot"></div>
+        <div>
+          <h4>bitBuddy AI</h4>
+          <span>Powered by Claude</span>
+        </div>
+      </div>
+      <div class="ai-messages" id="ai-messages">
+        <div class="ai-msg bot">
+          <div class="msg-label">bitBuddy AI</div>
+          Hey! 👋 I'm here to help with your notes. What would you like to know about Newton's Laws?
+        </div>
+      </div>
+      <div class="ai-input-area">
+        <div class="ai-quick-prompts">
+          <button class="quick-prompt">Summarise</button>
+          <button class="quick-prompt">Quiz me</button>
+          <button class="quick-prompt">Explain</button>
+          <button class="quick-prompt">Examples</button>
+        </div>
+        <div class="ai-input-row">
+          <input type="text" class="ai-input" id="ai-input-field" placeholder="Ask about your notes...">
+          <button class="ai-send" id="ai-send-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22,2 15,22 11,13 2,9"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/notes.js"></script>
+</body>
+</html>

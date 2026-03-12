@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classrooms — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/classroom.css">
+</head>
+<body>
+
+<div id="app-shell">
+
+  <div class="classroom-layout">
+
+    <!-- Inner Subject Sidebar -->
+    <div class="classroom-sidebar">
+      <div class="classroom-sidebar-header">
+        <h3>My Classrooms</h3>
+        <p>4 enrolled</p>
+      </div>
+      <div class="channel-section-label">Subjects</div>
+
+      <div class="class-ch active" data-subject="all">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>
+        <span>All Subjects</span>
+      </div>
+      <div class="class-ch" data-subject="science">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        <span>Science</span>
+      </div>
+      <div class="class-ch" data-subject="maths">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <span>Maths</span>
+      </div>
+      <div class="class-ch" data-subject="english">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        <span>English</span>
+      </div>
+      <div class="class-ch" data-subject="humanities">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>Humanities</span>
+      </div>
+      <div class="class-ch" data-subject="cs">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>
+        <span>Computer Science</span>
+      </div>
+    </div>
+
+    <!-- Main Course Grid -->
+    <div class="classroom-main">
+      <div class="class-filterbar">
+        <select class="filter-select" id="filter-year">
+          <option value="">Year Group</option>
+          <option value="10">Year 10</option>
+          <option value="11">Year 11</option>
+        </select>
+        <select class="filter-select" id="filter-subject">
+          <option value="">All Subjects</option>
+          <option value="maths">Maths</option>
+          <option value="science">Science</option>
+          <option value="english">English</option>
+          <option value="humanities">Humanities</option>
+          <option value="cs">Computer Science</option>
+        </select>
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="course-search" placeholder="Search courses...">
+        </div>
+      </div>
+
+      <div class="class-content">
+        <div class="class-grid">
+
+          <div class="course-card" data-subject="science" data-year="10">
+            <div class="course-banner" style="background:linear-gradient(135deg,#609F8A,#3d7a66)">Ph</div>
+            <div class="course-body">
+              <div class="course-title">Introduction to Physics</div>
+              <div class="course-desc">Forces, motion, energy and waves — your complete GCSE Physics companion.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  203 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="english" data-year="11">
+            <div class="course-banner" style="background:linear-gradient(135deg,#5b7fa8,#3d5d82)">En</div>
+            <div class="course-body">
+              <div class="course-title">English Literature</div>
+              <div class="course-desc">Macbeth, An Inspector Calls, and modern poetry — essay writing and analysis.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  178 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="maths" data-year="10">
+            <div class="course-banner" style="background:linear-gradient(135deg,#a87c5b,#7a5a3d)">Ma</div>
+            <div class="course-body">
+              <div class="course-title">GCSE Mathematics</div>
+              <div class="course-desc">Number, algebra, geometry, statistics — everything for your Maths GCSE.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  312 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="science" data-year="10">
+            <div class="course-banner" style="background:linear-gradient(135deg,#7b6aa8,#5a4a82)">Bi</div>
+            <div class="course-body">
+              <div class="course-title">Biology</div>
+              <div class="course-desc">Cells, genetics, ecosystems and human biology for GCSE Science.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  267 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="science" data-year="11">
+            <div class="course-banner" style="background:linear-gradient(135deg,#a8775b,#7a5030)">Ch</div>
+            <div class="course-body">
+              <div class="course-title">Chemistry</div>
+              <div class="course-desc">Atoms, reactions, organic chemistry — mastering the periodic table and beyond.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  241 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="humanities" data-year="10">
+            <div class="course-banner" style="background:linear-gradient(135deg,#4a8a9e,#2d6678)">Ge</div>
+            <div class="course-body">
+              <div class="course-title">Geography</div>
+              <div class="course-desc">Physical features, climate, population and human societies — your world explained.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  189 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="course-card" data-subject="cs" data-year="10">
+            <div class="course-banner" style="background:linear-gradient(135deg,#2d6e5e,#1a4a3e)">CS</div>
+            <div class="course-body">
+              <div class="course-title">Computer Science</div>
+              <div class="course-desc">Algorithms, data structures, programming and theory — GCSE CS made clear.</div>
+              <div class="course-meta">
+                <span class="course-students">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  156 students
+                </span>
+                <button class="view-btn">View Course</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/classroom.js"></script>
+</body>
+</html>

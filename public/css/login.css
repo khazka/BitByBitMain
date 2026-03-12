@@ -1,0 +1,133 @@
+/* =============================================
+   BITBUDDY — Login Page
+   ============================================= */
+
+body.login-page {
+  background: linear-gradient(135deg, #e8f4f0 0%, #f5faf8 50%, #e0eeea 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+body.login-page::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(96,159,138,0.18) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+body.login-page::after {
+  content: '';
+  position: absolute;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(128,178,162,0.14) 0%, transparent 70%);
+  bottom: -80px; left: -60px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.login-card {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px 44px;
+  width: 420px;
+  max-width: 95vw;
+  box-shadow: 0 8px 48px rgba(96,159,138,0.18);
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.5s ease;
+}
+
+.login-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+.login-logo .bb-icon {
+  width: 44px; height: 44px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+.login-logo .brand-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--text-main);
+}
+.login-logo .brand-name em { color: var(--primary); font-style: normal; }
+
+.login-card h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-main);
+  text-align: center;
+}
+.login-card .subtitle {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.social-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 50px;
+  border: 1.5px solid var(--gray);
+  background: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.social-btn:hover { border-color: var(--primary); background: #f0f8f5; }
+.social-btn svg { width: 18px; height: 18px; }
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.divider hr { flex: 1; border: none; border-top: 1px solid var(--gray); }
+
+.input-group { margin-bottom: 14px; }
+.input-group input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray);
+  background: var(--gray-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.input-group input:focus { border-color: var(--primary); background: white; }
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.login-footer a { color: var(--primary); text-decoration: none; font-weight: 500; }
+.login-footer a:hover { text-decoration: underline; }

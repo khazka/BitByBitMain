@@ -1,0 +1,146 @@
+/* =============================================
+   BITBUDDY — Classrooms
+   ============================================= */
+
+.classroom-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - var(--nav-height));
+}
+
+/* ---- Inner Sidebar (subject channels) ---- */
+.classroom-sidebar {
+  width: 220px;
+  background: #111;
+  padding: 16px 0;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+.classroom-sidebar-header {
+  padding: 0 14px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 8px;
+}
+.classroom-sidebar-header h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+.classroom-sidebar-header p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+}
+.channel-section-label {
+  padding: 10px 14px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.35);
+}
+.class-ch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 1px 6px;
+  transition: background 0.15s;
+}
+.class-ch:hover { background: rgba(255,255,255,0.07); }
+.class-ch.active { background: rgba(96,159,138,0.22); }
+.class-ch svg { width: 15px; height: 15px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+.class-ch span { font-size: 13.5px; color: rgba(255,255,255,0.65); }
+.class-ch.active span { color: white; }
+
+/* ---- Main content ---- */
+.classroom-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Filter bar */
+.class-filterbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-mid);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.class-filterbar .search-bar { max-width: 220px; }
+
+/* Course grid */
+.class-content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+}
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+/* Course card */
+.course-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  animation: fadeUp 0.3s ease;
+}
+.course-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+.course-banner {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.9);
+  position: relative;
+  overflow: hidden;
+}
+.course-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.25));
+}
+
+.course-body { padding: 16px; }
+.course-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.course-desc {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.course-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.course-students {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.course-students svg { width: 13px; height: 13px; }
