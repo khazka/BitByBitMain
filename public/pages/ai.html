@@ -14,7 +14,6 @@
 
   <div class="ai-layout">
 
-    <!-- ---- History Sidebar ---- -->
     <div class="ai-history">
       <div class="ai-history-header">
         <h3>Conversations</h3>
@@ -55,31 +54,29 @@
       </div>
     </div>
 
-    <!-- ---- Main Chat ---- -->
     <div class="ai-main">
 
-      <!-- Welcome screen -->
       <div class="ai-welcome" id="ai-welcome">
         <div class="welcome-icon">bb</div>
         <div class="welcome-title">Hey Jamie, what are we studying? 👋</div>
         <p class="welcome-sub">Ask me anything — I can explain concepts, check your answers, help with essays, or quiz you on any GCSE subject.</p>
         <div class="suggestion-grid">
-          <button class="suggestion-card" onclick="useSuggestion(this)">
+          <button class="suggestion-card">
             <div class="s-icon">⚛️</div>
             <div class="s-title">Explain a concept</div>
             <div class="s-sub">e.g. "Explain Newton's 3rd Law"</div>
           </button>
-          <button class="suggestion-card" onclick="useSuggestion(this)">
+          <button class="suggestion-card">
             <div class="s-icon">✅</div>
             <div class="s-title">Check my answer</div>
             <div class="s-sub">Paste your working and I'll review it</div>
           </button>
-          <button class="suggestion-card" onclick="useSuggestion(this)">
+          <button class="suggestion-card">
             <div class="s-icon">🧠</div>
             <div class="s-title">Quiz me</div>
             <div class="s-sub">e.g. "Quiz me on cell biology"</div>
           </button>
-          <button class="suggestion-card" onclick="useSuggestion(this)">
+          <button class="suggestion-card">
             <div class="s-icon">📝</div>
             <div class="s-title">Help with an essay</div>
             <div class="s-sub">Structure, quotes, analysis tips</div>
@@ -87,10 +84,8 @@
         </div>
       </div>
 
-      <!-- Messages -->
       <div class="ai-messages-area hidden" id="ai-messages-area"></div>
 
-      <!-- Input -->
       <div class="ai-input-section">
         <div class="subject-chips">
           <button class="subject-chip-btn active" data-subject="General">✨ General</button>
@@ -115,9 +110,7 @@
       </div>
     </div>
 
-    <!-- ---- Right Context Panel ---- -->
     <div class="ai-context-panel">
-
       <div class="context-section">
         <h4>What I can do</h4>
         <div class="capability-item"><div class="cap-dot"></div>Explain any GCSE topic clearly</div>
@@ -127,7 +120,6 @@
         <div class="capability-item"><div class="cap-dot"></div>Break down exam questions</div>
         <div class="capability-item"><div class="cap-dot"></div>Suggest revision strategies</div>
       </div>
-
       <div class="context-section">
         <h4>Subjects covered</h4>
         <div class="subject-tag-list">
@@ -141,14 +133,12 @@
           <span class="subject-tag" style="background:#e8f4f8;color:#2d5c78;">Geography</span>
         </div>
       </div>
-
       <div class="context-section">
         <h4>Tips</h4>
         <div class="tip-card"><strong>Be specific</strong> — "Explain osmosis for Year 10 Biology" gets better results than just "Explain osmosis"</div>
         <div class="tip-card"><strong>Share your working</strong> — paste your attempt and ask me to check it</div>
         <div class="tip-card"><strong>Ask for examples</strong> — real-world examples make tricky concepts stick</div>
       </div>
-
     </div>
 
   </div>

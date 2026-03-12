@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Notes — bitBuddy</title>
+  <title>Notes — bitBuddy</title>
   <link rel="stylesheet" href="/css/global.css">
   <link rel="stylesheet" href="/css/layout.css">
   <link rel="stylesheet" href="/css/notes.css">
@@ -14,7 +14,6 @@
 
   <div class="notes-layout">
 
-    <!-- Notes List Sidebar -->
     <div class="notes-sidebar">
       <div class="notes-sidebar-header">
         <h3>My Notes</h3>
@@ -52,7 +51,6 @@
       </div>
     </div>
 
-    <!-- Editor -->
     <div class="notes-editor">
       <input class="note-editor-title" id="note-title" type="text" value="⚛️ Physics: Newton's Laws" placeholder="Note title...">
       <div class="note-toolbar">
@@ -89,40 +87,6 @@ For every action, there is an equal and opposite reaction.
 
 Real-world example:
 When you jump off a boat, you push the boat backwards. The force you exert on the boat is equal to the force the boat exerts back on you.</textarea>
-    </div>
-
-    <!-- AI Panel -->
-    <div class="notes-ai-panel">
-      <div class="ai-panel-header">
-        <div class="ai-dot"></div>
-        <div>
-          <h4>bitBuddy AI</h4>
-          <span>Powered by Claude</span>
-        </div>
-      </div>
-      <div class="ai-messages" id="ai-messages">
-        <div class="ai-msg bot">
-          <div class="msg-label">bitBuddy AI</div>
-          Hey! 👋 I'm here to help with your notes. What would you like to know about Newton's Laws?
-        </div>
-      </div>
-      <div class="ai-input-area">
-        <div class="ai-quick-prompts">
-          <button class="quick-prompt">Summarise</button>
-          <button class="quick-prompt">Quiz me</button>
-          <button class="quick-prompt">Explain</button>
-          <button class="quick-prompt">Examples</button>
-        </div>
-        <div class="ai-input-row">
-          <input type="text" class="ai-input" id="ai-input-field" placeholder="Ask about your notes...">
-          <button class="ai-send" id="ai-send-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22,2 15,22 11,13 2,9"/>
-            </svg>
-          </button>
-        </div>
-      </div>
     </div>
 
   </div>
