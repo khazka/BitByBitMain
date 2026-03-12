@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Assistant — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/ai.css">
+</head>
+<body>
+
+<div id="app-shell">
+
+  <div class="ai-layout">
+
+    <!-- ---- History Sidebar ---- -->
+    <div class="ai-history">
+      <div class="ai-history-header">
+        <h3>Conversations</h3>
+        <button class="new-chat-btn" id="btn-new-chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Chat
+        </button>
+      </div>
+      <div class="ai-history-list" id="history-list">
+        <div class="history-item active">
+          <div class="history-icon">⚛️</div>
+          <div class="history-text">
+            <div class="history-title">Newton's Laws of Motion</div>
+            <div class="history-preview">Can you explain the 3rd law...</div>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-icon">📐</div>
+          <div class="history-text">
+            <div class="history-title">Quadratic Equations</div>
+            <div class="history-preview">What's the easiest way to...</div>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-icon">📖</div>
+          <div class="history-text">
+            <div class="history-title">Macbeth Themes</div>
+            <div class="history-preview">Quotes about ambition and...</div>
+          </div>
+        </div>
+        <div class="history-item">
+          <div class="history-icon">🧬</div>
+          <div class="history-text">
+            <div class="history-title">Cell Division</div>
+            <div class="history-preview">Difference between mitosis...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Main Chat ---- -->
+    <div class="ai-main">
+
+      <!-- Welcome screen -->
+      <div class="ai-welcome" id="ai-welcome">
+        <div class="welcome-icon">bb</div>
+        <div class="welcome-title">Hey Jamie, what are we studying? 👋</div>
+        <p class="welcome-sub">Ask me anything — I can explain concepts, check your answers, help with essays, or quiz you on any GCSE subject.</p>
+        <div class="suggestion-grid">
+          <button class="suggestion-card" onclick="useSuggestion(this)">
+            <div class="s-icon">⚛️</div>
+            <div class="s-title">Explain a concept</div>
+            <div class="s-sub">e.g. "Explain Newton's 3rd Law"</div>
+          </button>
+          <button class="suggestion-card" onclick="useSuggestion(this)">
+            <div class="s-icon">✅</div>
+            <div class="s-title">Check my answer</div>
+            <div class="s-sub">Paste your working and I'll review it</div>
+          </button>
+          <button class="suggestion-card" onclick="useSuggestion(this)">
+            <div class="s-icon">🧠</div>
+            <div class="s-title">Quiz me</div>
+            <div class="s-sub">e.g. "Quiz me on cell biology"</div>
+          </button>
+          <button class="suggestion-card" onclick="useSuggestion(this)">
+            <div class="s-icon">📝</div>
+            <div class="s-title">Help with an essay</div>
+            <div class="s-sub">Structure, quotes, analysis tips</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div class="ai-messages-area hidden" id="ai-messages-area"></div>
+
+      <!-- Input -->
+      <div class="ai-input-section">
+        <div class="subject-chips">
+          <button class="subject-chip-btn active" data-subject="General">✨ General</button>
+          <button class="subject-chip-btn" data-subject="Maths">📐 Maths</button>
+          <button class="subject-chip-btn" data-subject="Science">🔬 Science</button>
+          <button class="subject-chip-btn" data-subject="English">📖 English</button>
+          <button class="subject-chip-btn" data-subject="History">🏛️ History</button>
+          <button class="subject-chip-btn" data-subject="Geography">🌍 Geography</button>
+        </div>
+        <div class="ai-input-box">
+          <textarea id="ai-textarea" placeholder="Ask bitBuddy anything..." rows="1"></textarea>
+          <div class="ai-input-footer">
+            <span class="ai-input-hint"><kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</span>
+            <button class="ai-send-btn" id="ai-send-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22,2 15,22 11,13 2,9"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---- Right Context Panel ---- -->
+    <div class="ai-context-panel">
+
+      <div class="context-section">
+        <h4>What I can do</h4>
+        <div class="capability-item"><div class="cap-dot"></div>Explain any GCSE topic clearly</div>
+        <div class="capability-item"><div class="cap-dot"></div>Check and mark your answers</div>
+        <div class="capability-item"><div class="cap-dot"></div>Quiz you with practice questions</div>
+        <div class="capability-item"><div class="cap-dot"></div>Help structure essays and arguments</div>
+        <div class="capability-item"><div class="cap-dot"></div>Break down exam questions</div>
+        <div class="capability-item"><div class="cap-dot"></div>Suggest revision strategies</div>
+      </div>
+
+      <div class="context-section">
+        <h4>Subjects covered</h4>
+        <div class="subject-tag-list">
+          <span class="subject-tag" style="background:#e8f4f0;color:#4a7d6e;">Maths</span>
+          <span class="subject-tag" style="background:#e8eef8;color:#3d5d82;">Physics</span>
+          <span class="subject-tag" style="background:#f3e8f8;color:#6a3d82;">Biology</span>
+          <span class="subject-tag" style="background:#f8f0e8;color:#7a5030;">Chemistry</span>
+          <span class="subject-tag" style="background:#e8f8ee;color:#2d6e5e;">Comp Sci</span>
+          <span class="subject-tag" style="background:#fdf3e8;color:#92400e;">English</span>
+          <span class="subject-tag" style="background:#f0f0f0;color:#555;">History</span>
+          <span class="subject-tag" style="background:#e8f4f8;color:#2d5c78;">Geography</span>
+        </div>
+      </div>
+
+      <div class="context-section">
+        <h4>Tips</h4>
+        <div class="tip-card"><strong>Be specific</strong> — "Explain osmosis for Year 10 Biology" gets better results than just "Explain osmosis"</div>
+        <div class="tip-card"><strong>Share your working</strong> — paste your attempt and ask me to check it</div>
+        <div class="tip-card"><strong>Ask for examples</strong> — real-world examples make tricky concepts stick</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="/js/layout.js"></script>
+<script src="/js/ai.js"></script>
+</body>
+</html>

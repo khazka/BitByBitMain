@@ -1,15 +1,3 @@
-/* =============================================
-   BITBUDDY — Shared Layout (Sidebar + Topnav)
-   Injected into every app page dynamically
-   ============================================= */
-
-/**
- * Call initLayout({ title, activeNav }) at the top of each page's JS.
- *
- * @param {object} opts
- * @param {string} opts.title     - Page title shown in top nav
- * @param {string} opts.activeNav - Which nav item is active: 'space' | 'classroom' | 'notes' | 'chat'
- */
 function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
   const navItems = [
     {
@@ -26,7 +14,7 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
     },
     {
       id: 'notes',
-      label: 'AI Notes',
+      label: 'Notes',
       href: '/notes',
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`
     },
@@ -35,6 +23,12 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
       label: 'Study Chat',
       href: '/chat',
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`
+    },
+    {
+      id: 'ai',
+      label: 'AI Assistant',
+      href: '/ai',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`
     }
   ];
 
