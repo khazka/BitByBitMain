@@ -11,7 +11,6 @@
  * @param {string} opts.activeNav - Which nav item is active: 'space' | 'classroom' | 'notes' | 'chat'
  */
 function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
-  // ---- Build sidebar HTML ----
   const navItems = [
     {
       id: 'space',
@@ -51,13 +50,12 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
   const sidebarHTML = `
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <img src="/Logo.jpeg" alt="bitBuddy" style="width:75%;height:auto;padding:2px 4px;display:block;margin:0 auto;">
+        <div class="bb-icon" style="width:36px;height:36px;font-size:14px;border-radius:10px;">bb</div>
+        <div class="name">bit<em>Buddy</em></div>
       </div>
 
       <div class="sidebar-section-label">Main</div>
       <ul class="sidebar-nav">${navHTML}</ul>
-
-
 
       <div class="sidebar-bottom">
         <a href="/profile" class="user-pill" style="text-decoration:none;">
@@ -99,17 +97,14 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
     </nav>
   `;
 
-  // ---- Inject into page ----
   const shell = document.getElementById('app-shell');
   if (!shell) {
     console.error('[bitBuddy] No #app-shell element found on this page.');
     return;
   }
 
-  // Wrap existing page content
   const pageContent = shell.innerHTML;
   shell.innerHTML = sidebarHTML + `<div class="main-area">${topnavHTML}<div class="page-content">${pageContent}</div></div>`;
 
-  // Set document title
   document.title = `${title} — bitBuddy`;
 }
