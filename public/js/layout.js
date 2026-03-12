@@ -51,37 +51,13 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
   const sidebarHTML = `
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <div class="bb-icon" style="width:36px;height:36px;font-size:14px;border-radius:10px;">bb</div>
-        <div class="name">bit<em>Buddy</em></div>
+        <img src="/Logo.jpeg" alt="bitBuddy" style="width:75%;height:auto;padding:2px 4px;display:block;margin:0 auto;">
       </div>
 
       <div class="sidebar-section-label">Main</div>
       <ul class="sidebar-nav">${navHTML}</ul>
 
-      <div class="sidebar-section-label" style="margin-top:14px;">My Classrooms</div>
-      <div class="sidebar-servers">
-        <a href="/classroom" class="server-item">
-          <div class="server-avatar" style="background:#609F8A">Ma</div>
-          <div class="server-info">
-            <div class="server-name">Year 10 Maths</div>
-            <div class="server-count">142 students</div>
-          </div>
-        </a>
-        <a href="/classroom" class="server-item">
-          <div class="server-avatar" style="background:#5b7fa8">Sc</div>
-          <div class="server-info">
-            <div class="server-name">Science Club</div>
-            <div class="server-count">98 students</div>
-          </div>
-        </a>
-        <a href="/classroom" class="server-item">
-          <div class="server-avatar" style="background:#a87c5b">En</div>
-          <div class="server-info">
-            <div class="server-name">English Lit</div>
-            <div class="server-count">67 students</div>
-          </div>
-        </a>
-      </div>
+
 
       <div class="sidebar-bottom">
         <a href="/profile" class="user-pill" style="text-decoration:none;">
