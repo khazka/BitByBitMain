@@ -1,0 +1,210 @@
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.page{
+display:flex;
+flex-direction:column;
+row-gap:60px;
+width:100%;
+}
+
+/* HERO */
+
+.top{
+width:100%;
+height:80vh;
+background:linear-gradient(rgb(21,2,63), #01a9b1);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+padding:20px;
+}
+
+.hero{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.top h1{
+color:white;
+font-size:72px;
+font-weight:800;
+margin-bottom:20px;
+max-width:900px;
+}
+
+.top p{
+color:#d0d0d0;
+font-size:22px;
+max-width:650px;
+line-height:1.5;
+}
+
+/* REGISTER BUTTON */
+
+.register-btn{
+margin-top:30px;
+padding:14px 34px;
+font-size:18px;
+font-weight:600;
+
+background-color:#00e0ff;
+color:#12033a;
+
+border-radius:8px;
+text-decoration:none;
+
+transition:all 0.2s ease;
+}
+
+.register-btn:hover{
+background:#00c6e3;
+transform:translateY(-3px);
+}
+
+/* FEATURES */
+
+.advan{
+width:100%;
+height:70vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.reverse{
+flex-direction:row-reverse;
+}
+
+.disc{
+width:50%;
+padding:60px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.disc h3{
+font-size:56px;
+font-weight:800;
+margin-bottom:20px;
+color:#1f3d1f;
+}
+
+.disc p{
+font-size:20px;
+line-height:1.6;
+color:#2d4a2d;
+max-width:500px;
+}
+
+.pic{
+width:50%;
+height:80%;
+background:rgb(21,2,63);
+border-radius:10px;
+}
+
+/* FOOTER */
+
+.bottom{
+width:100%;
+background:rgb(21,2,63);
+}
+
+.site-footer{
+color:#ddd;
+padding:60px 20px 20px;
+}
+
+.footer-container{
+max-width:1100px;
+margin:auto;
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+}
+
+.footer-column{
+flex:1;
+min-width:200px;
+}
+
+.footer-column h3,
+.footer-column h4{
+color:white;
+margin-bottom:15px;
+}
+
+.footer-column p{
+color:#bbb;
+line-height:1.6;
+}
+
+.footer-column ul{
+list-style:none;
+padding:0;
+}
+
+.footer-column li{
+margin-bottom:8px;
+}
+
+.footer-column a{
+color:#bbb;
+text-decoration:none;
+}
+
+.footer-column a:hover{
+color:white;
+}
+
+.footer-bottom{
+text-align:center;
+border-top:1px solid #444;
+margin-top:30px;
+padding-top:15px;
+font-size:14px;
+color:#999;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.advan{
+flex-direction:column;
+height:auto;
+}
+
+.reverse{
+flex-direction:column;
+}
+
+.disc{
+width:100%;
+text-align:center;
+align-items:center;
+}
+
+.pic{
+width:80%;
+height:250px;
+}
+
+.top h1{
+font-size:48px;
+}
+
+.top p{
+font-size:18px;
+}
+
+}
