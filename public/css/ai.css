@@ -4,9 +4,8 @@
 
 .ai-layout {
   display: flex;
-  flex: 1;
-  height: calc(100vh - var(--nav-height));
   overflow: hidden;
+  height: calc(100vh - var(--nav-height));
 }
 
 /* ---- Left: Conversation History ---- */
@@ -393,3 +392,16 @@
 
 @media (max-width: 1100px) { .ai-context-panel { display: none; } }
 @media (max-width: 800px)  { .ai-history { display: none; } }
+
+/* Make page-content fill properly for this full-height layout */
+.page-content:has(.ai-layout) {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex: 1;
+  height: calc(100vh - var(--nav-height));
+}
+
+.main-area:has(.ai-layout) {
+  overflow: hidden;
+}
