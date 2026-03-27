@@ -53,7 +53,7 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
 
       <div class="sidebar-bottom">
         <a href="/profile" class="user-pill" style="text-decoration:none;">
-          <div class="avatar" style="width:32px;height:32px;font-size:13px;" id="sidebar-avatar">JD</div>
+          <div class="avatar" style="width:32px;height:32px;font-size:12px;" id="sidebar-avatar">JD</div>
           <div>
             <div class="user-name" id="sidebar-username">Jamie D.</div>
             <div class="user-tag">Year 10 · Student</div>
@@ -86,7 +86,9 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
             <path d="M13.73 21a2 2 0 01-3.46 0"/>
           </svg>
         </button>
-        <div class="avatar" style="width:34px;height:34px;font-size:13px;cursor:pointer;" id="topnav-avatar" title="My Profile" onclick="window.location.href='/profile'">JD</div>
+        <div class="avatar" style="width:34px;height:34px;font-size:12px;cursor:pointer;"
+             id="topnav-avatar" title="My Profile"
+             onclick="window.location.href='/profile'">JD</div>
       </div>
     </nav>
   `;
@@ -97,8 +99,25 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
     return;
   }
 
+  // Pages that need full-height zero-padding layout
+  const fullHeightPages = ['ai', 'chat', 'notes'];
+  const isFullHeight = fullHeightPages.includes(activeNav);
+
+  const pageContentStyle = isFullHeight
+    ? 'style="padding:0;overflow:hidden;display:flex;flex:1;height:calc(100vh - var(--nav-height));"'
+    : '';
+
+  const mainAreaStyle = isFullHeight
+    ? 'style="overflow:hidden;"'
+    : '';
+
   const pageContent = shell.innerHTML;
-  shell.innerHTML = sidebarHTML + `<div class="main-area">${topnavHTML}<div class="page-content">${pageContent}</div></div>`;
+  shell.innerHTML =
+    sidebarHTML +
+    `<div class="main-area" ${mainAreaStyle}>
+       ${topnavHTML}
+       <div class="page-content" ${pageContentStyle}>${pageContent}</div>
+     </div>`;
 
   document.title = `${title} — bitBuddy`;
 }

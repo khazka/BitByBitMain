@@ -19,6 +19,17 @@
   flex-direction: column;
   z-index: 100;
   padding-bottom: 20px;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Subtle gradient overlay at bottom for depth */
+.sidebar::after {
+  content: '';
+  position: absolute;
+  bottom: 70px; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
+  pointer-events: none;
 }
 
 .sidebar-logo {
@@ -26,35 +37,42 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 10px;
 }
 .sidebar-logo .bb-icon {
   width: 36px; height: 36px;
   font-size: 14px;
   border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(96,159,138,0.35);
 }
 .sidebar-logo .name {
   font-family: 'Sora', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-  color: white;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.2px;
 }
-.sidebar-logo .name em { color: var(--primary); font-style: normal; }
+.sidebar-logo .name em {
+  color: var(--primary);
+  font-style: normal;
+}
 
 .sidebar-section-label {
-  padding: 10px 20px 4px;
-  font-size: 10px;
-  font-weight: 600;
+  padding: 12px 20px 5px;
+  font-size: 9.5px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: rgba(255,255,255,0.3);
+  letter-spacing: 1.4px;
+  color: rgba(255,255,255,0.25);
+  font-family: 'Sora', sans-serif;
 }
 
 .sidebar-nav {
   list-style: none;
   padding: 0 10px;
 }
+.sidebar-nav li { margin-bottom: 2px; }
 .sidebar-nav li a,
 .sidebar-nav li button {
   display: flex;
@@ -62,28 +80,51 @@
   gap: 10px;
   padding: 10px 12px;
   border-radius: 10px;
-  color: rgba(255,255,255,0.65);
+  color: rgba(255,255,255,0.55);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 500;
   cursor: pointer;
   background: none;
   border: none;
   width: 100%;
   text-align: left;
-  transition: background 0.15s, color 0.15s;
+  transition: background var(--t-base), color var(--t-base), transform var(--t-fast);
   font-family: 'Plus Jakarta Sans', sans-serif;
+  position: relative;
 }
 .sidebar-nav li a:hover,
-.sidebar-nav li button:hover,
+.sidebar-nav li button:hover {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.88);
+  transform: translateX(2px);
+}
 .sidebar-nav li a.active,
 .sidebar-nav li button.active {
-  background: rgba(96,159,138,0.18);
+  background: rgba(96,159,138,0.20);
   color: white;
+  font-weight: 600;
+}
+/* Active left accent bar */
+.sidebar-nav li a.active::before,
+.sidebar-nav li button.active::before {
+  content: '';
+  position: absolute;
+  left: -10px; top: 25%; bottom: 25%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--primary);
 }
 .sidebar-nav li a.active svg,
-.sidebar-nav li button.active svg { color: var(--primary); }
-.sidebar-nav svg { width: 17px; height: 17px; flex-shrink: 0; }
+.sidebar-nav li button.active svg {
+  color: var(--primary);
+}
+.sidebar-nav svg {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  transition: color var(--t-base);
+  color: rgba(255,255,255,0.35);
+}
 
 /* ---- Server / Classroom items ---- */
 .sidebar-servers { padding: 0 10px; margin-top: 4px; }
@@ -94,30 +135,35 @@
   padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background var(--t-base), transform var(--t-fast);
   text-decoration: none;
 }
-.server-item:hover { background: rgba(255,255,255,0.06); }
+.server-item:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateX(2px);
+}
 .server-avatar {
   width: 32px; height: 32px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: white;
   flex-shrink: 0;
   font-family: 'Sora', sans-serif;
 }
-.server-info .server-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
-.server-info .server-count { font-size: 11px; color: rgba(255,255,255,0.35); }
+.server-info .server-name  { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.75); }
+.server-info .server-count { font-size: 11px; color: rgba(255,255,255,0.30); margin-top: 1px; }
 
 /* ---- Bottom user pill ---- */
 .sidebar-bottom {
   margin-top: auto;
-  padding: 10px 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  position: relative;
+  z-index: 1;
 }
 .user-pill {
   display: flex;
@@ -126,12 +172,13 @@
   padding: 10px 12px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: background var(--t-base);
+  text-decoration: none;
 }
-.user-pill:hover { background: rgba(255,255,255,0.06); }
-.user-pill .avatar { width: 32px; height: 32px; font-size: 13px; }
-.user-pill .user-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
-.user-pill .user-tag  { font-size: 11px; color: rgba(255,255,255,0.35); }
+.user-pill:hover { background: rgba(255,255,255,0.07); }
+.user-pill .avatar { width: 32px; height: 32px; font-size: 12px; }
+.user-pill .user-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); }
+.user-pill .user-tag  { font-size: 11px; color: rgba(255,255,255,0.30); margin-top: 1px; }
 
 /* ---- Main area ---- */
 .main-area {
@@ -154,13 +201,15 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 1px 0 var(--gray-mid), 0 2px 12px rgba(0,0,0,0.04);
 }
 .topnav-title {
   font-family: 'Sora', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--text-main);
   flex-shrink: 0;
+  letter-spacing: -0.2px;
 }
 .topnav-actions {
   display: flex;
@@ -168,4 +217,14 @@
   gap: 10px;
   margin-left: auto;
 }
-.topnav .avatar { width: 34px; height: 34px; font-size: 13px; cursor: pointer; }
+.topnav .avatar {
+  width: 34px; height: 34px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  box-shadow: 0 0 0 2px transparent;
+}
+.topnav .avatar:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
