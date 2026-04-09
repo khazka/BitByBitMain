@@ -5,7 +5,8 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/login.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/index.html')));
+app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/login.html')));
 app.get('/space', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/space.html')));
 app.get('/classroom', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/classroom.html')));
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/pages/notes.html')));
