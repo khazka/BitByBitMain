@@ -14,123 +14,189 @@
 
   <div class="chat-layout">
 
-    <!-- Channel Sidebar -->
-    <div class="chat-sidebar">
-      <div class="chat-server-header">
-        <h3>Year 10 Maths</h3>
-        <p>142 members online</p>
-      </div>
-
-      <div class="channel-label">Text Channels</div>
-      <div class="chat-channel active" data-channel="general">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <span>general</span>
-        <span class="online-count">42</span>
-      </div>
-      <div class="chat-channel" data-channel="homework-help">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span>homework-help</span>
-        <span class="online-count">18</span>
-      </div>
-      <div class="chat-channel" data-channel="exam-revision">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
-        <span>exam-revision</span>
-        <span class="online-count">31</span>
-      </div>
-      <div class="chat-channel" data-channel="resources">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
-        <span>resources</span>
-      </div>
-
-      <div class="channel-label" style="margin-top:12px;">Voice Channels</div>
-      <div class="chat-channel" data-channel="study-room-1">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
-        <span>Study Room 1</span>
-        <span class="online-count">4</span>
+    <!-- Server Rail -->
+    <div class="server-rail">
+      <div class="server-icon active" data-server="0" title="Jamie's Study Gang" style="background:#609F8A;">JS</div>
+      <div class="server-icon" data-server="1" title="Mocks Prep Squad" style="background:#5b7fa8;">MP</div>
+      <div class="server-icon" data-server="2" title="Bio Revision" style="background:#7b6aa8;">BR</div>
+      <div class="server-rail-divider"></div>
+      <div class="server-icon server-icon-add" id="btn-add-server" title="Create or join a server">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </div>
     </div>
 
-    <!-- Chat Main -->
-    <div class="chat-main">
-      <div class="chat-header">
+    <!-- Channel Sidebar -->
+    <div class="chat-sidebar" id="chat-sidebar">
+      <div class="chat-server-header">
+        <h3 id="server-name">Jamie's Study Gang</h3>
+        <p id="server-members">4 members</p>
+      </div>
+
+      <div class="channel-label">Text Channels</div>
+      <div class="chat-channel active" data-channel="general" data-type="text">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <h4 id="channel-title">general</h4>
-        <p>Year 10 Maths — general discussion</p>
-        <div class="online-pill">142 online</div>
+        <span>general</span>
+        <span class="online-count">3</span>
+      </div>
+      <div class="chat-channel" data-channel="homework-help" data-type="text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>homework-help</span>
+      </div>
+      <div class="chat-channel" data-channel="exam-revision" data-type="text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+        <span>exam-revision</span>
       </div>
 
-      <div class="chat-messages" id="chat-messages">
-
-        <div class="chat-msg-group">
-          <div class="avatar" style="background:#5b7fa8;width:36px;height:36px;font-size:13px;">AK</div>
-          <div class="chat-msg-content">
-            <div class="chat-msg-header">
-              <span class="chat-msg-author">Amira K.</span>
-              <span class="chat-msg-time">Today at 3:42 PM</span>
-            </div>
-            <div class="chat-bubble question-bubble">
-              Hey everyone, does anyone understand how to do simultaneous equations with 3 variables? We did it in class but I got lost after the first substitution step 😅
-            </div>
-          </div>
-        </div>
-
-        <div class="chat-msg-group">
-          <div class="avatar" style="background:#a87c5b;width:36px;height:36px;font-size:13px;">LS</div>
-          <div class="chat-msg-content">
-            <div class="chat-msg-header">
-              <span class="chat-msg-author">Liam S.</span>
-              <span class="chat-msg-time">Today at 3:45 PM</span>
-            </div>
-            <div class="chat-bubble">
-              Yeah it's tricky! The key is to eliminate one variable at a time. Start with any two equations and eliminate <code>z</code>, then use those two results to find <code>x</code> and <code>y</code>
-            </div>
-          </div>
-        </div>
-
-        <div class="chat-msg-group">
-          <div class="avatar" style="background:var(--primary);width:36px;height:36px;font-size:13px;">BB</div>
-          <div class="chat-msg-content">
-            <div class="chat-msg-header">
-              <span class="chat-msg-author" style="color:var(--primary)">bitBuddy AI</span>
-              <span class="chat-msg-time">Today at 3:46 PM</span>
-            </div>
-            <div class="chat-ai-reply">
-              <div class="ai-label">✨ AI Study Help</div>
-              Great question Amira! Here's a step-by-step method for 3-variable simultaneous equations:<br><br>
-              <strong>Step 1:</strong> Pick any 2 equations, eliminate one variable<br>
-              <strong>Step 2:</strong> Pick a different pair, eliminate the same variable<br>
-              <strong>Step 3:</strong> You now have 2 equations with 2 unknowns — solve normally<br>
-              <strong>Step 4:</strong> Substitute back to find the third variable<br><br>
-              Type <strong>@bitBuddy</strong> in the chat to ask me anything! 📚
-            </div>
-          </div>
-        </div>
-
-        <div class="chat-msg-group">
-          <div class="avatar" style="background:#609F8A;width:36px;height:36px;font-size:13px;">JD</div>
-          <div class="chat-msg-content">
-            <div class="chat-msg-header">
-              <span class="chat-msg-author">Jamie D. (You)</span>
-              <span class="chat-msg-time">Today at 3:48 PM</span>
-            </div>
-            <div class="chat-bubble">This is so helpful! @bitBuddy can you give an example with actual numbers?</div>
-          </div>
-        </div>
-
+      <div class="channel-label" style="margin-top:12px;">Voice Channels</div>
+      <div class="chat-channel voice-channel" data-channel="study-room-1" data-type="voice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+        <span>Study Room 1</span>
+      </div>
+      <div class="chat-channel voice-channel" data-channel="chill-revision" data-type="voice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+        <span>Chill Revision</span>
       </div>
 
-      <!-- Input -->
-      <div class="chat-input-area">
-        <div class="chat-input-row">
-          <input type="text" id="chat-input" placeholder="Message #general — type @bitBuddy for AI help">
-          <button class="send-btn" id="chat-send-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="22" y1="2" x2="11" y2="13"/>
-              <polygon points="22,2 15,22 11,13 2,9"/>
-            </svg>
+      <!-- User panel -->
+      <div class="sidebar-user-panel">
+        <div class="sup-avatar" style="background:#609F8A;">JD</div>
+        <div class="sup-info">
+          <div class="sup-name">Jamie D.</div>
+          <div class="sup-tag" id="sup-status">Online</div>
+        </div>
+        <div class="sup-controls">
+          <button class="sup-btn" id="btn-mic" title="Mute microphone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </button>
+          <button class="sup-btn" id="btn-deafen" title="Deafen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
           </button>
         </div>
       </div>
+    </div>
+
+    <!-- Main area -->
+    <div class="chat-main" id="chat-main">
+
+      <!-- TEXT VIEW -->
+      <div id="text-view">
+        <div class="chat-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          <h4 id="channel-title">general</h4>
+          <p id="channel-desc">Jamie's Study Gang — general</p>
+          <div class="online-pill">4 online</div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="chat-msg-group">
+            <div class="avatar" style="background:#5b7fa8;width:36px;height:36px;font-size:13px;">AK</div>
+            <div class="chat-msg-content">
+              <div class="chat-msg-header">
+                <span class="chat-msg-author">Amira K.</span>
+                <span class="chat-msg-time">Today at 3:42 PM</span>
+              </div>
+              <div class="chat-bubble question-bubble">
+                Hey everyone, does anyone understand how to do simultaneous equations with 3 variables? I got lost after the first substitution step 😅
+              </div>
+            </div>
+          </div>
+          <div class="chat-msg-group">
+            <div class="avatar" style="background:var(--primary);width:36px;height:36px;font-size:13px;">BB</div>
+            <div class="chat-msg-content">
+              <div class="chat-msg-header">
+                <span class="chat-msg-author" style="color:var(--primary)">bitBuddy AI</span>
+                <span class="chat-msg-time">Today at 3:46 PM</span>
+              </div>
+              <div class="chat-ai-reply">
+                <div class="ai-label">✨ AI Study Help</div>
+                Great question! Eliminate one variable at a time across pairs of equations — then solve the resulting 2-variable system. Type <strong>@bitBuddy</strong> for more help! 📚
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <div class="chat-input-row">
+            <input type="text" id="chat-input" placeholder="Message #general — type @bitBuddy for AI help">
+            <button class="send-btn" id="chat-send-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VOICE VIEW -->
+      <div id="voice-view" class="hidden">
+        <div class="voice-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+          <h4 id="voice-channel-title">Study Room 1</h4>
+          <p id="voice-channel-desc">Jamie's Study Gang</p>
+        </div>
+        <div class="voice-stage" id="voice-stage"></div>
+        <div class="voice-controls">
+          <div class="vc-room-info">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/></svg>
+            <span id="vc-room-name">Study Room 1</span>
+            <span class="vc-connected-dot"></span>
+            <span class="vc-connected-label">Live</span>
+          </div>
+          <div class="vc-btns">
+            <button class="vc-btn" id="vc-mic" title="Mute">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </button>
+            <button class="vc-btn" id="vc-deafen" title="Deafen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg>
+            </button>
+            <button class="vc-btn vc-btn-leave" id="vc-leave" title="Leave call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.68 13.31a16 16 0 003.41 2.6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7 2 2 0 011.72 2v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07"/><path d="M3 3l18 18"/><path d="M10.68 10.68A16.06 16.06 0 003.07 3.07 2 2 0 001 5.25V8a2 2 0 001.72 2 12.84 12.84 0 002.81.7 2 2 0 011.45 2.11l-1.27 1.27"/></svg>
+              Leave
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Add/Join Server Modal -->
+<div class="server-modal-overlay hidden" id="server-modal">
+  <div class="server-modal">
+    <div class="server-modal-header">
+      <div class="server-modal-title">Study Servers</div>
+      <button class="server-modal-close" id="server-modal-close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="server-modal-option" id="modal-join-btn">
+      <div class="smo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/><polyline points="10,17 15,12 10,7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      </div>
+      <div class="smo-text">
+        <div class="smo-title">Join a server</div>
+        <div class="smo-sub">Enter an invite code to join a friend's study server</div>
+      </div>
+      <svg class="smo-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+    </div>
+
+    <!-- Join via code (hidden until clicked) -->
+    <div class="server-modal-codebox hidden" id="modal-codebox">
+      <input type="text" id="invite-code-input" placeholder="Enter invite code e.g. GCSE-2026" maxlength="20">
+      <button class="smo-join-confirm" id="modal-join-confirm">Join →</button>
+    </div>
+
+    <div class="smo-divider">or</div>
+
+    <div class="server-modal-option server-modal-option-premium" id="modal-create-btn">
+      <div class="smo-icon smo-icon-premium">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      </div>
+      <div class="smo-text">
+        <div class="smo-title">Create a server
+          <span class="smo-premium-badge">Premium</span>
+        </div>
+        <div class="smo-sub">Upgrade to bitBuddy Premium to create and manage your own study server</div>
+      </div>
+      <svg class="smo-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
     </div>
 
   </div>
