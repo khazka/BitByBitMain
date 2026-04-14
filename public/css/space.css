@@ -10,7 +10,6 @@
 .feed-main {
   flex: 1;
   padding: 24px 24px 40px 28px;
-  max-width: 720px;
   overflow-y: auto;
 }
 

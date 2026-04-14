@@ -6,6 +6,8 @@
   display: flex;
   overflow: hidden;
   height: calc(100vh - var(--nav-height));
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
 }
 
 /* ---- Left: Conversation History ---- */
@@ -112,6 +114,7 @@
 /* ---- Centre: Main Chat ---- */
 .ai-main {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -287,6 +290,7 @@
   background: #f7faf9;
   flex-shrink: 0;
   border-top: 1px solid var(--gray-mid);
+  width: 100%;
 }
 .subject-chips { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
 .subject-chip-btn {
@@ -386,7 +390,7 @@
 .page-content:has(.ai-layout) {
   padding: 0;
   overflow: hidden;
-  display: flex;
+  position: relative;
   flex: 1;
   height: calc(100vh - var(--nav-height));
 }
