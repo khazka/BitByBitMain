@@ -74,6 +74,10 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
         <input type="text" placeholder="Search posts, notes, classrooms..." id="global-search">
       </div>
       <div class="topnav-actions">
+        <a href="/premium" class="topnav-premium-btn" title="Join Premium">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+          Join Premium
+        </a>
         <button class="icon-btn" title="New Post" id="btn-new-post">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="12" y1="5" x2="12" y2="19"/>
