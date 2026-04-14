@@ -257,3 +257,126 @@
   flex-shrink: 0;
   fill: rgba(255,255,255,0.9);
 }
+/* ---- Add Friend Modal ---- */
+.friend-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.15s ease;
+}
+.friend-modal {
+  background: var(--white);
+  border-radius: 20px;
+  width: 480px; max-width: 95vw;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  animation: fadeUp 0.2s cubic-bezier(0.22,1,0.36,1);
+  border: 1px solid var(--gray-mid);
+  overflow: hidden;
+  max-height: 80vh;
+  display: flex; flex-direction: column;
+}
+.friend-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--gray-mid);
+  flex-shrink: 0;
+}
+.friend-modal-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px; font-weight: 800;
+  color: var(--text-main); letter-spacing: -0.2px;
+  display: flex; align-items: center; gap: 8px;
+}
+.friend-modal-close {
+  width: 30px; height: 30px; border-radius: 8px;
+  border: 1.5px solid var(--gray-mid);
+  background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.friend-modal-close:hover { background: var(--gray-light); color: var(--text-main); }
+.friend-modal-close svg { width: 14px; height: 14px; }
+
+.friend-search-wrap {
+  position: relative;
+  padding: 14px 20px;
+  flex-shrink: 0;
+}
+.friend-search-wrap svg {
+  position: absolute; left: 34px; top: 50%;
+  transform: translateY(-50%);
+  width: 15px; height: 15px;
+  color: var(--text-muted); pointer-events: none;
+}
+.friend-search-wrap input {
+  width: 100%; padding: 10px 14px 10px 38px;
+  border-radius: 12px;
+  border: 1.5px solid var(--gray);
+  background: var(--gray-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; color: var(--text-main);
+  outline: none;
+  transition: border-color var(--t-base), background var(--t-base), box-shadow var(--t-base);
+}
+.friend-search-wrap input:focus {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+.friend-search-wrap input::placeholder { color: var(--text-faint); }
+
+.friend-list-label {
+  padding: 0 20px 8px;
+  font-size: 10.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.2px;
+  color: var(--text-faint);
+  font-family: 'Sora', sans-serif;
+  flex-shrink: 0;
+}
+
+.friend-list {
+  overflow-y: auto;
+  padding: 0 12px 12px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.friend-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  transition: background var(--t-fast);
+}
+.friend-item:hover { background: var(--gray-light); }
+.friend-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+.friend-info { flex: 1; min-width: 0; }
+.friend-name {
+  font-size: 14px; font-weight: 600;
+  color: var(--text-main); margin-bottom: 2px;
+}
+.friend-tag { font-size: 12px; color: var(--text-faint); }
+.friend-add-btn {
+  padding: 7px 16px; border-radius: 50px;
+  border: 1.5px solid var(--primary);
+  background: transparent; color: var(--primary);
+  font-family: 'Sora', sans-serif;
+  font-size: 12.5px; font-weight: 700;
+  cursor: pointer; flex-shrink: 0;
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+.friend-add-btn:hover:not(:disabled) {
+  background: var(--primary); color: white;
+  transform: scale(1.04);
+}
+.friend-add-btn.sent {
+  border-color: var(--gray);
+  color: var(--text-faint);
+  font-weight: 500;
+}
