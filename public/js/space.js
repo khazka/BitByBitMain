@@ -175,13 +175,11 @@ function prependPost({ author, initials, time, text, subject, tags = [] }) {
   `;
   feedPosts.prepend(card);
   attachVoteListener(card.querySelector('.vote-btn'));
-  sortPostsByVotes();
 }
 
 /* ---- Post Actions (vote, etc.) ---- */
 function initPostActions() {
   document.querySelectorAll('.vote-btn').forEach(attachVoteListener);
-  sortPostsByVotes();
 }
 
 function attachVoteListener(btn) {
@@ -207,26 +205,5 @@ function attachVoteListener(btn) {
       btn.style.transform = 'scale(1.2)';
       setTimeout(() => { btn.style.transform = ''; }, 150);
     }
-
-    sortPostsByVotes();
-  });
-}
-
-function sortPostsByVotes() {
-  const feed  = document.getElementById('feed-posts');
-  if (!feed) return;
-  const cards = Array.from(feed.querySelectorAll('.post-card'));
-  cards.sort((a, b) => {
-    const aVotes = parseInt(a.querySelector('.vote-count')?.textContent) || 0;
-    const bVotes = parseInt(b.querySelector('.vote-count')?.textContent) || 0;
-    return bVotes - aVotes;
-  });
-  cards.forEach(card => {
-    card.style.animation = 'none';
-    feed.appendChild(card);
-    // re-trigger fade animation
-    requestAnimationFrame(() => {
-      card.style.animation = '';
-    });
   });
 }
