@@ -102,7 +102,80 @@
   box-shadow: 0 3px 10px rgba(96,159,138,0.30);
 }
 
-/* ---- Feed Tabs ---- */
+/* ---- Compose Pickers ---- */
+.compose-pickers {
+  padding: 12px 0 4px 48px;
+  animation: fadeUp 0.2s ease;
+}
+.compose-picker-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.compose-picker-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 160px;
+}
+.compose-picker-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-family: 'Sora', sans-serif;
+}
+.compose-picker-select,
+.compose-picker-input {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--gray);
+  background: var(--gray-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+.compose-picker-select:focus,
+.compose-picker-input:focus {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+.compose-picker-input::placeholder { color: var(--text-faint); }
+
+.compose-selected-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.compose-selected-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  background: var(--primary-subtle);
+  border: 1px solid rgba(96,159,138,0.25);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+.compose-selected-tag button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-dark);
+  font-size: 13px;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.6;
+}
+.compose-selected-tag button:hover { opacity: 1; }
 .feed-tabs {
   display: flex;
   gap: 6px;
@@ -229,6 +302,12 @@
   background: var(--primary-subtle);
   color: var(--primary);
   transform: translateY(-1px);
+}
+.vote-btn {
+  transition: color var(--t-fast), transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+}
+.vote-btn svg {
+  transition: fill var(--t-fast), stroke var(--t-fast);
 }
 .post-action svg { width: 15px; height: 15px; }
 .vote-count { font-weight: 700; min-width: 14px; text-align: center; }

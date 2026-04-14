@@ -24,9 +24,36 @@
           <div class="avatar" style="width:36px;height:36px;font-size:13px;">JD</div>
           <input type="text" id="compose-input" class="compose-input" placeholder="Ask a question or share what you've learned...">
         </div>
+
+        <!-- Subject & Topic pickers (hidden until clicked) -->
+        <div class="compose-pickers" id="compose-pickers" style="display:none;">
+          <div class="compose-picker-row">
+            <div class="compose-picker-group">
+              <label class="compose-picker-label">📚 Subject</label>
+              <select class="compose-picker-select" id="compose-subject">
+                <option value="">Select subject...</option>
+                <option>Physics</option>
+                <option>Maths</option>
+                <option>Biology</option>
+                <option>Chemistry</option>
+                <option>English</option>
+                <option>History</option>
+                <option>Geography</option>
+                <option>Computer Science</option>
+                <option>General</option>
+              </select>
+            </div>
+            <div class="compose-picker-group">
+              <label class="compose-picker-label">🔖 Topic</label>
+              <input type="text" class="compose-picker-input" id="compose-topic" placeholder="e.g. Forces, Quadratics...">
+            </div>
+          </div>
+          <div class="compose-selected-tags" id="compose-selected-tags"></div>
+        </div>
+
         <div class="compose-actions">
-          <button class="compose-tag">📚 Add Subject</button>
-          <button class="compose-tag">🔖 Tag Topic</button>
+          <button class="compose-tag" id="btn-add-subject">📚 Add Subject</button>
+          <button class="compose-tag" id="btn-tag-topic">🔖 Tag Topic</button>
           <button class="compose-tag">🤖 AI Validate</button>
           <button class="compose-post-btn" id="compose-post-btn">Post</button>
         </div>

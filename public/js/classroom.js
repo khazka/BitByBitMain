@@ -63,21 +63,32 @@ function filterCourses(subject) {
 
 /* ---- Course cards ---- */
 function initCourseCards() {
+  const bitesizeUrls = {
+    'Introduction to Physics':  'https://www.bbc.co.uk/bitesize/subjects/zng4d2p',
+    'English Literature':       'https://www.bbc.co.uk/bitesize/subjects/zr9d7ty',
+    'GCSE Mathematics':         'https://www.bbc.co.uk/bitesize/subjects/z38pycw',
+    'Biology':                  'https://www.bbc.co.uk/bitesize/subjects/z9ddmp3',
+    'Chemistry':                'https://www.bbc.co.uk/bitesize/subjects/z4dqp39',
+    'Geography':                'https://www.bbc.co.uk/bitesize/subjects/zkw76sg',
+    'Computer Science':         'https://www.bbc.co.uk/bitesize/subjects/zvxsk2p',
+  };
+
   document.querySelectorAll('.view-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const card  = btn.closest('.course-card');
-      const title = card?.querySelector('.course-title')?.textContent;
-      // TODO: navigate to individual course page
-      console.log('[bitBuddy] Opening course:', title);
+      const title = card?.querySelector('.course-title')?.textContent.trim();
+      const url   = bitesizeUrls[title] || 'https://www.bbc.co.uk/bitesize/levels/z98jmp3';
+      window.open(url, '_blank');
     });
   });
 
   document.querySelectorAll('.course-card').forEach(card => {
+    card.style.cursor = 'pointer';
     card.addEventListener('click', () => {
-      const title = card.querySelector('.course-title')?.textContent;
-      // TODO: navigate to course page
-      console.log('[bitBuddy] Course card clicked:', title);
+      const title = card.querySelector('.course-title')?.textContent.trim();
+      const url   = bitesizeUrls[title] || 'https://www.bbc.co.uk/bitesize/levels/z98jmp3';
+      window.open(url, '_blank');
     });
   });
 }
