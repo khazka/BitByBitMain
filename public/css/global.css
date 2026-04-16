@@ -308,3 +308,182 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* =============================================
+   BITBUDDY — Dark Mode
+   ============================================= */
+
+[data-theme="dark"] {
+  --primary:        #6ab89f;
+  --primary-light:  #8ecbb6;
+  --primary-dark:   #4a9278;
+  --primary-subtle: rgba(96,159,138,0.15);
+  --primary-glow:   rgba(96,159,138,0.22);
+
+  --black:      #f0f0f0;
+  --white:      #1a1a1a;
+  --gray:       #3a3a3a;
+  --gray-light: #242424;
+  --gray-mid:   #2e2e2e;
+  --gray-dark:  #555;
+
+  --text-main:  #f0f0f0;
+  --text-sub:   #c8d0cc;
+  --text-muted: #8a9e97;
+  --text-faint: #5a6e68;
+
+  --surface:        #1a1a1a;
+  --surface-raised: #202020;
+
+  --shadow-xs: 0 1px 4px rgba(0,0,0,0.3);
+  --shadow:    0 2px 12px rgba(0,0,0,0.35);
+  --shadow-md: 0 6px 28px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] body {
+  background: #141414;
+}
+
+/* Sidebar dark */
+[data-theme="dark"] .sidebar {
+  background: #111;
+  border-right-color: rgba(255,255,255,0.06);
+}
+[data-theme="dark"] .sidebar::after {
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6));
+}
+
+/* Topnav dark */
+[data-theme="dark"] .topnav {
+  background: rgba(26,26,26,0.95);
+  border-bottom-color: var(--gray-mid);
+}
+
+/* Cards & surfaces */
+[data-theme="dark"] .post-card,
+[data-theme="dark"] .widget,
+[data-theme="dark"] .compose-box,
+[data-theme="dark"] .course-card,
+[data-theme="dark"] .section-card,
+[data-theme="dark"] .stat-card,
+[data-theme="dark"] .profile-header-card,
+[data-theme="dark"] .modal-card,
+[data-theme="dark"] .ai-input-box,
+[data-theme="dark"] .chat-header,
+[data-theme="dark"] .chat-input-area,
+[data-theme="dark"] .notes-editor,
+[data-theme="dark"] .notes-sidebar-header {
+  background: #1e1e1e;
+  border-color: var(--gray-mid);
+}
+
+/* Chat bubbles */
+[data-theme="dark"] .chat-bubble {
+  background: #252525;
+  border-color: #333;
+  color: var(--text-main);
+}
+[data-theme="dark"] .chat-bubble.question-bubble {
+  background: #1a2820;
+}
+
+/* AI replies */
+[data-theme="dark"] .chat-ai-reply,
+[data-theme="dark"] .msg-bubble.bot {
+  background: #1a2820;
+  border-color: rgba(96,159,138,0.25);
+}
+[data-theme="dark"] .msg-bubble.user {
+  background: var(--primary-dark);
+}
+
+/* Inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .compose-input,
+[data-theme="dark"] .ai-input,
+[data-theme="dark"] .search-bar input,
+[data-theme="dark"] .chat-input-row,
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea,
+[data-theme="dark"] .filter-select,
+[data-theme="dark"] .compose-picker-select,
+[data-theme="dark"] .compose-picker-input {
+  background: #252525;
+  border-color: #333;
+  color: var(--text-main);
+}
+
+/* Feed messages area */
+[data-theme="dark"] .chat-messages,
+[data-theme="dark"] .ai-main,
+[data-theme="dark"] #text-view,
+[data-theme="dark"] .ai-input-section,
+[data-theme="dark"] .ai-messages-area,
+[data-theme="dark"] .ai-welcome,
+[data-theme="dark"] .feed-main,
+[data-theme="dark"] .page-content,
+[data-theme="dark"] .profile-layout,
+[data-theme="dark"] .class-content,
+[data-theme="dark"] .notes-editor {
+  background: #141414;
+}
+
+/* Sidebar panels */
+[data-theme="dark"] .ai-history,
+[data-theme="dark"] .notes-sidebar,
+[data-theme="dark"] .chat-sidebar,
+[data-theme="dark"] .server-rail {
+  background: #1a1a1a;
+  border-color: var(--gray-mid);
+}
+
+/* Feed sidebar widgets */
+[data-theme="dark"] .feed-sidebar .widget {
+  background: #1e1e1e;
+  border-color: var(--gray-mid);
+}
+
+/* Profile banner stays */
+[data-theme="dark"] .profile-banner {
+  background: linear-gradient(140deg, var(--primary-dark) 0%, #1a3d30 100%);
+}
+
+/* Post tags */
+[data-theme="dark"] .post-tag {
+  background: #252525;
+  border-color: #333;
+  color: var(--text-muted);
+}
+
+/* Suggestion cards */
+[data-theme="dark"] .suggestion-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+/* Scrollbar dark */
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Voice view dark */
+[data-theme="dark"] #voice-view {
+  background: #181818;
+}
+[data-theme="dark"] .voice-header,
+[data-theme="dark"] .voice-controls {
+  background: #1e1e1e;
+  border-color: var(--gray-mid);
+}
+
+/* Transition for smooth switching */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}

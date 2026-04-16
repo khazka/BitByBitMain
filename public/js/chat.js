@@ -424,7 +424,7 @@ async function fetchAIReply(question) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514', max_tokens: 600,
-        system: `You are bitBuddy AI in a group study chat for secondary school students (ages 11-16). Be helpful, encouraging and concise. Use simple language. Keep answers short — this is a chat. End with an offer to go deeper.`,
+        system: 'You are bitBuddy AI in a group study chat for secondary school students (ages 11-16). Be helpful, encouraging and concise. Use simple language. Keep answers short — this is a chat. End with an offer to go deeper.',
         messages: [{ role: 'user', content: question || 'Hello!' }]
       })
     });

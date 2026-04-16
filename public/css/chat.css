@@ -12,7 +12,7 @@
 /* ---- Server Rail ---- */
 .server-rail {
   width: 72px;
-  background: #111111;
+  background: var(--gray-light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +25,8 @@
 .server-icon {
   width: 48px; height: 48px;
   border-radius: 50%;
-  background: #2a2a2a;
-  color: rgba(255,255,255,0.75);
+  background: var(--gray-mid);
+  color: var(--text-muted);
   display: flex; align-items: center; justify-content: center;
   font-family: 'Sora', sans-serif;
   font-size: 13px; font-weight: 700;
@@ -45,7 +45,7 @@
   transform: translateY(-50%);
   width: 4px; height: 36px;
   border-radius: 0 4px 4px 0;
-  background: white;
+  background: var(--primary);
 }
 .server-icon:hover:not(.active)::before {
   content: '';
@@ -54,10 +54,10 @@
   transform: translateY(-50%);
   width: 4px; height: 20px;
   border-radius: 0 4px 4px 0;
-  background: white;
+  background: var(--primary);
 }
 .server-icon-add {
-  background: #1e1e1e;
+  background: var(--white);
   color: var(--primary);
   border: 2px dashed rgba(96,159,138,0.4);
 }
@@ -65,7 +65,7 @@
 .server-icon-add svg { width: 18px; height: 18px; }
 .server-rail-divider {
   width: 32px; height: 2px;
-  background: rgba(255,255,255,0.08);
+  background: var(--gray-mid);
   border-radius: 2px;
   flex-shrink: 0;
   margin: 4px 0;
@@ -74,7 +74,7 @@
 /* ---- Channel sidebar ---- */
 .chat-sidebar {
   width: 224px;
-  background: #161616;
+  background: var(--surface-raised);
   display: flex;
   flex-direction: column;
   padding: 16px 0 0;
@@ -83,21 +83,21 @@
 }
 .chat-server-header {
   padding: 0 16px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid var(--gray-mid);
   margin-bottom: 10px;
 }
 .chat-server-header h3 {
   font-family: 'Sora', sans-serif;
   font-size: 14px; font-weight: 700;
-  color: rgba(255,255,255,0.92); letter-spacing: -0.1px;
+  color: var(--text-main); letter-spacing: -0.1px;
 }
-.chat-server-header p { font-size: 11.5px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+.chat-server-header p { font-size: 11.5px; color: var(--text-muted); margin-top: 2px; }
 
 .channel-label {
   padding: 8px 16px 4px;
   font-size: 9.5px; font-weight: 700;
   text-transform: uppercase; letter-spacing: 1.2px;
-  color: rgba(255,255,255,0.25);
+  color: var(--text-faint);
   font-family: 'Sora', sans-serif;
 }
 .chat-channel {
@@ -108,7 +108,7 @@
   transition: background var(--t-fast), transform var(--t-fast);
   position: relative;
 }
-.chat-channel:hover { background: rgba(255,255,255,0.07); transform: translateX(2px); }
+.chat-channel:hover { background: var(--gray-light); transform: translateX(2px); }
 .chat-channel.active { background: rgba(96,159,138,0.22); }
 .chat-channel.active::before {
   content: '';
@@ -117,10 +117,10 @@
   width: 3px; border-radius: 0 2px 2px 0;
   background: var(--primary);
 }
-.chat-channel svg { width: 14px; height: 14px; color: rgba(255,255,255,0.35); flex-shrink: 0; transition: color var(--t-fast); }
-.chat-channel.active svg { color: var(--primary-light); }
-.chat-channel span { font-size: 13.5px; color: rgba(255,255,255,0.60); flex: 1; transition: color var(--t-fast); }
-.chat-channel:hover span, .chat-channel.active span { color: rgba(255,255,255,0.92); }
+.chat-channel svg { width: 14px; height: 14px; color: var(--text-faint); flex-shrink: 0; transition: color var(--t-fast); }
+.chat-channel.active svg { color: var(--primary); }
+.chat-channel span { font-size: 13.5px; color: var(--text-muted); flex: 1; transition: color var(--t-fast); }
+.chat-channel:hover span, .chat-channel.active span { color: var(--text-main); }
 .online-count { font-size: 10px; color: var(--primary-light); font-family: 'Sora', sans-serif; font-weight: 600; }
 
 /* Voice channel join hint */
@@ -136,11 +136,21 @@
 .sidebar-user-panel {
   margin-top: auto;
   padding: 10px 12px;
-  background: #0e0e0e;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  background: var(--gray-light);
+  border-top: 1px solid var(--gray-mid);
   display: flex; align-items: center; gap: 8px;
   flex-shrink: 0;
 }
+.sup-name { font-size: 12.5px; font-weight: 600; color: var(--text-main); }
+.sup-tag  { font-size: 10.5px; color: var(--text-faint); }
+.sup-btn {
+  width: 28px; height: 28px; border-radius: 6px;
+  border: none; background: transparent;
+  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background var(--t-fast), color var(--t-fast);
+}
+.sup-btn:hover { background: var(--gray-mid); color: var(--text-main); }
 .sup-avatar {
   width: 32px; height: 32px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
@@ -148,16 +158,7 @@
   flex-shrink: 0;
 }
 .sup-info { flex: 1; min-width: 0; }
-.sup-name { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.88); }
-.sup-tag  { font-size: 10.5px; color: rgba(255,255,255,0.35); }
 .sup-controls { display: flex; gap: 4px; }
-.sup-btn {
-  width: 28px; height: 28px; border-radius: 6px;
-  border: none; background: transparent;
-  color: rgba(255,255,255,0.5);
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background var(--t-fast), color var(--t-fast);
-}
 .sup-btn:hover { background: rgba(255,255,255,0.1); color: white; }
 .sup-btn.muted { color: #e05252; }
 .sup-btn svg { width: 14px; height: 14px; }
@@ -241,20 +242,20 @@
    ============================================= */
 #voice-view {
   flex: 1; display: flex; flex-direction: column;
-  background: #1a1a1a; overflow: hidden;
+  background: var(--gray-light); overflow: hidden;
 }
 #voice-view.hidden { display: none; }
 
 .voice-header {
   padding: 14px 22px;
-  background: #1e1e1e;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-mid);
   display: flex; align-items: center; gap: 10px;
   flex-shrink: 0;
 }
-.voice-header svg { width: 16px; height: 16px; color: var(--primary-light); }
-.voice-header h4 { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.92); }
-.voice-header p  { font-size: 12px; color: rgba(255,255,255,0.35); margin-left: 2px; }
+.voice-header svg { width: 16px; height: 16px; color: var(--primary); }
+.voice-header h4 { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-main); }
+.voice-header p  { font-size: 12px; color: var(--text-faint); margin-left: 2px; }
 
 /* Participant grid */
 .voice-stage {
@@ -311,7 +312,7 @@
 }
 .vp-icon {
   width: 20px; height: 20px; border-radius: 50%;
-  background: #2a2a2a; border: 1.5px solid #111;
+  background: var(--white); border: 1.5px solid var(--gray-mid);
   display: flex; align-items: center; justify-content: center;
 }
 .vp-icon svg { width: 10px; height: 10px; }
@@ -321,23 +322,23 @@
 
 .vp-name {
   font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600;
-  color: rgba(255,255,255,0.88); text-align: center;
+  color: var(--text-main); text-align: center;
 }
 .vp-tag {
-  font-size: 10.5px; color: rgba(255,255,255,0.35); text-align: center; margin-top: -6px;
+  font-size: 10.5px; color: var(--text-faint); text-align: center; margin-top: -6px;
 }
 
 /* Voice control bar */
 .voice-controls {
-  background: #111;
-  border-top: 1px solid rgba(255,255,255,0.07);
+  background: var(--white);
+  border-top: 1px solid var(--gray-mid);
   padding: 12px 22px;
   display: flex; align-items: center; justify-content: space-between;
   flex-shrink: 0;
 }
 .vc-room-info {
   display: flex; align-items: center; gap: 7px;
-  font-size: 12px; color: rgba(255,255,255,0.5);
+  font-size: 12px; color: var(--text-muted);
   font-family: 'Sora', sans-serif;
 }
 .vc-connected-dot {
@@ -350,18 +351,18 @@
 .vc-btns { display: flex; gap: 8px; align-items: center; }
 .vc-btn {
   width: 38px; height: 38px; border-radius: 10px; border: none;
-  background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75);
+  background: var(--gray-light); color: var(--text-muted);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: background var(--t-fast), color var(--t-fast);
 }
-.vc-btn:hover { background: rgba(255,255,255,0.15); color: white; }
-.vc-btn.active { background: rgba(96,159,138,0.25); color: var(--primary-light); }
-.vc-btn.muted  { background: rgba(224,82,82,0.2); color: #e05252; }
+.vc-btn:hover { background: var(--gray-mid); color: var(--text-main); }
+.vc-btn.active { background: var(--primary-subtle); color: var(--primary); }
+.vc-btn.muted  { background: rgba(224,82,82,0.1); color: #e05252; }
 .vc-btn svg { width: 16px; height: 16px; }
 .vc-btn-leave {
   display: flex; align-items: center; gap: 6px;
   padding: 0 16px; width: auto;
-  background: rgba(224,82,82,0.18); color: #e05252;
+  background: rgba(224,82,82,0.1); color: #e05252;
   font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600;
 }
 .vc-btn-leave:hover { background: #e05252; color: white; }

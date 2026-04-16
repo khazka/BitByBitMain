@@ -160,7 +160,7 @@ function showTyping() {
   return row;
 }
 
-/* ---- Fetch AI reply from Anthropic API ---- */
+/* ---- Fetch AI reply from OpenAI API ---- */
 async function fetchAIReply() {
   const typingEl = showTyping();
 
@@ -182,10 +182,8 @@ Encourage the student and offer to go deeper if they want more detail.`,
     const data  = await res.json();
     const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response — try again in a moment!";
 
-    // Remove typing indicator
     typingEl?.remove();
 
-    // Add to history and display
     conversationHistory.push({ role: 'assistant', content: reply });
     appendMessage('bot', reply.replace(/\n/g, '<br>'));
 
