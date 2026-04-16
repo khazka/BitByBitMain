@@ -52,13 +52,29 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
       <ul class="sidebar-nav">${navHTML}</ul>
 
       <div class="sidebar-bottom">
-        <a href="/profile" class="user-pill" style="text-decoration:none;">
+        <div class="user-pill" id="sidebar-user-pill" style="cursor:pointer;flex:1;">
           <div class="avatar" style="width:32px;height:32px;font-size:12px;" id="sidebar-avatar">JD</div>
-          <div>
+          <div style="flex:1;">
             <div class="user-name" id="sidebar-username">Jamie D.</div>
             <div class="user-tag">Year 10 · Student</div>
           </div>
-        </a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;color:rgba(255,255,255,0.3);flex-shrink:0;"><polyline points="6,9 12,15 18,9"/></svg>
+        </div>
+        <div class="sidebar-user-menu hidden" id="sidebar-user-menu">
+          <a href="/profile" class="sidebar-menu-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            View Profile
+          </a>
+          <a href="/premium" class="sidebar-menu-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            Join Premium
+          </a>
+          <div class="sidebar-menu-divider"></div>
+          <button class="sidebar-menu-item sidebar-menu-logout" id="btn-logout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Log Out
+          </button>
+        </div>
       </div>
     </aside>
   `;
@@ -310,6 +326,22 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
     var modal = document.getElementById('friend-modal');
     if (modal) modal.style.display = 'none';
   }
+
+  /* ---- User menu dropdown ---- */
+  document.getElementById('sidebar-user-pill')?.addEventListener('click', function(e) {
+    e.stopPropagation();
+    document.getElementById('sidebar-user-menu').classList.toggle('hidden');
+  });
+  document.addEventListener('click', function() {
+    document.getElementById('sidebar-user-menu')?.classList.add('hidden');
+  });
+
+  /* ---- Logout ---- */
+  document.getElementById('btn-logout')?.addEventListener('click', function() {
+    if (confirm('Are you sure you want to log out?')) {
+      window.location.href = '/login';
+    }
+  });
 
   /* ---- Dark Mode ---- */
   function applyTheme(dark) {
