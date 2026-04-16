@@ -51,6 +51,31 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
       <div class="sidebar-section-label">Main</div>
       <ul class="sidebar-nav">${navHTML}</ul>
 
+      <div class="sidebar-section-label">You · Study</div>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="/premium" class="sidebar-study-locked">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            Study Plan
+            <span class="nav-lock-badge">Premium</span>
+          </a>
+        </li>
+        <li>
+          <a href="/premium" class="sidebar-study-locked">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Progress
+            <span class="nav-lock-badge">Premium</span>
+          </a>
+        </li>
+        <li>
+          <a href="/premium" class="sidebar-study-locked">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            Exam Generator
+            <span class="nav-lock-badge" style="background:rgba(124,58,237,0.15);color:#a78bfa;border-color:rgba(124,58,237,0.25);">Pro</span>
+          </a>
+        </li>
+      </ul>
+
       <div class="sidebar-bottom">
         <div class="user-pill" id="sidebar-user-pill" style="cursor:pointer;flex:1;">
           <div class="avatar" style="width:32px;height:32px;font-size:12px;" id="sidebar-avatar">JD</div>
