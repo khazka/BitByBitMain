@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <style>
+    .messages-layout {
+      flex: 1; display: flex; overflow: hidden;
+      height: calc(100vh - var(--nav-height));
+    }
+
+    /* ---- DM List ---- */
+    .dm-list-panel {
+      width: 260px; background: var(--surface-raised);
+      border-right: 1px solid var(--gray-mid);
+      display: flex; flex-direction: column;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .dm-list-header {
+      padding: 16px 14px 12px;
+      border-bottom: 1px solid var(--gray-mid); flex-shrink: 0;
+    }
+    .dm-list-header h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 13.5px; font-weight: 800;
+      color: var(--text-main); margin-bottom: 10px;
+    }
+    .dm-search { position: relative; }
+    .dm-search svg {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      width: 13px; height: 13px; color: var(--text-faint); pointer-events: none;
+    }
+    .dm-search input {
+      width: 100%; padding: 7px 10px 7px 30px;
+      border-radius: 10px; border: 1.5px solid var(--gray);
+      background: var(--gray-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; color: var(--text-main); outline: none;
+      transition: border-color var(--t-base);
+    }
+    .dm-search input:focus { border-color: var(--primary); background: white; }
+    .dm-search input::placeholder { color: var(--text-faint); }
+
+    .dm-list { flex: 1; overflow-y: auto; padding: 8px 0; }
+    .dm-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; cursor: pointer;
+      border-radius: 10px; margin: 1px 8px;
+      transition: background var(--t-fast); position: relative;
+    }
+    .dm-row:hover { background: var(--gray-light); }
+    .dm-row.active { background: var(--primary-subtle); }
+    .dm-row-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700; color: white;
+      flex-shrink: 0; position: relative;
+    }
+    .online-dot {
+      position: absolute; bottom: 1px; right: 1px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #22c55e; border: 2px solid var(--surface-raised);
+    }
+    .offline-dot {
+      position: absolute; bottom: 1px; right: 1px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--gray-dark); border: 2px solid var(--surface-raised);
+    }
+    .dm-row-info { flex: 1; min-width: 0; }
+    .dm-row-name { font-size: 13px; font-weight: 600; color: var(--text-main); }
+    .dm-row-preview { font-size: 11.5px; color: var(--text-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+    .dm-row-preview.unread { color: var(--text-main); font-weight: 600; }
+    .dm-unread-badge {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--primary); color: white;
+      font-size: 9px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-family: 'Sora', sans-serif;
+    }
+
+    /* ---- Chat Area ---- */
+    .dm-chat-area {
+      flex: 1; display: flex; flex-direction: column; overflow: hidden;
+    }
+
+    /* Hint screen */
+    .dm-hint {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 40px; color: var(--text-faint);
+    }
+    .dm-hint .hint-icon { font-size: 52px; margin-bottom: 16px; }
+    .dm-hint h4 {
+      font-family: 'Sora', sans-serif; font-size: 17px; font-weight: 800;
+      color: var(--text-muted); margin-bottom: 8px;
+    }
+    .dm-hint p { font-size: 13.5px; line-height: 1.6; max-width: 280px; }
+
+    /* Active chat */
+    .dm-active { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .dm-active.hidden { display: none; }
+
+    .dm-chat-header {
+      padding: 12px 20px; background: var(--white);
+      border-bottom: 1px solid var(--gray-mid);
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+      box-shadow: 0 1px 0 var(--gray-mid), 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .dm-chat-header-av {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: white;
+    }
+    .dm-chat-header-name { font-family: 'Sora', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-main); }
+    .dm-chat-header-status { font-size: 12px; color: var(--text-faint); }
+    .dm-chat-header-status.online { color: #22c55e; font-weight: 500; }
+
+    .dm-messages {
+      flex: 1; overflow-y: auto; padding: 20px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+      background: #f8faf9;
+    }
+    .dm-msg { display: flex; gap: 10px; animation: fadeUp 0.2s ease; }
+    .dm-msg.own { flex-direction: row-reverse; }
+    .dm-msg-av {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 700; color: white;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .dm-msg-inner { max-width: 68%; }
+    .dm-msg-time { font-size: 10.5px; color: var(--text-faint); margin-bottom: 3px; }
+    .dm-msg.own .dm-msg-time { text-align: right; }
+    .dm-bubble {
+      padding: 9px 13px; font-size: 13.5px; line-height: 1.55;
+      border-radius: 4px 14px 14px 14px;
+      background: var(--white); border: 1px solid var(--gray-mid); color: var(--text-main);
+    }
+    .dm-msg.own .dm-bubble {
+      background: var(--primary); color: white;
+      border: none; border-radius: 14px 4px 14px 14px;
+    }
+
+    .dm-input-bar {
+      padding: 12px 18px; background: var(--white);
+      border-top: 1px solid var(--gray-mid);
+      display: flex; gap: 8px; align-items: center; flex-shrink: 0;
+    }
+    .dm-text-input {
+      flex: 1; padding: 10px 14px;
+      border-radius: 12px; border: 1.5px solid var(--gray);
+      background: var(--gray-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; color: var(--text-main); outline: none;
+      transition: border-color var(--t-base), box-shadow var(--t-base);
+    }
+    .dm-text-input:focus {
+      border-color: var(--primary); background: white;
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .dm-text-input::placeholder { color: var(--text-faint); }
+    .dm-send-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      border: none; background: var(--primary); color: white;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background var(--t-fast), transform var(--t-fast);
+      flex-shrink: 0;
+    }
+    .dm-send-btn:hover { background: var(--primary-dark); transform: scale(1.06); }
+    .dm-send-btn svg { width: 15px; height: 15px; }
+  </style>
+</head>
+<body>
+<div id="app-shell">
+  <div class="messages-layout">
+
+    <!-- DM List -->
+    <div class="dm-list-panel">
+      <div class="dm-list-header">
+        <h3>Messages</h3>
+        <div class="dm-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="dm-search" placeholder="Search messages...">
+        </div>
+      </div>
+      <div class="dm-list" id="dm-list">
+        <div class="dm-row active" data-idx="0">
+          <div class="dm-row-avatar" style="background:#5b7fa8;">AK<div class="online-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Amira Khan</div>
+            <div class="dm-row-preview unread">Are you joining the study session tonight?</div>
+          </div>
+          <div class="dm-unread-badge">2</div>
+        </div>
+        <div class="dm-row" data-idx="1">
+          <div class="dm-row-avatar" style="background:#a87c5b;">LS<div class="online-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Liam Scott</div>
+            <div class="dm-row-preview">Good luck with your mocks 💪</div>
+          </div>
+        </div>
+        <div class="dm-row" data-idx="2">
+          <div class="dm-row-avatar" style="background:#609F8A;">PO<div class="offline-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Priya Osei</div>
+            <div class="dm-row-preview">No messages yet</div>
+          </div>
+        </div>
+        <div class="dm-row" data-idx="3">
+          <div class="dm-row-avatar" style="background:#2d6e5e;">TM<div class="offline-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Tyler Mason</div>
+            <div class="dm-row-preview">No messages yet</div>
+          </div>
+        </div>
+        <div class="dm-row" data-idx="4">
+          <div class="dm-row-avatar" style="background:#7b6aa8;">SR<div class="online-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Sofia Rahman</div>
+            <div class="dm-row-preview unread">Hey, can you share your Biology notes?</div>
+          </div>
+        </div>
+        <div class="dm-row" data-idx="5">
+          <div class="dm-row-avatar" style="background:#4a8a9e;">JB<div class="offline-dot"></div></div>
+          <div class="dm-row-info">
+            <div class="dm-row-name">Jake Brennan</div>
+            <div class="dm-row-preview">No messages yet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="dm-chat-area">
+      <div class="dm-hint" id="dm-hint">
+        <div class="hint-icon">💬</div>
+        <h4>Your messages</h4>
+        <p>Select a conversation on the left to start chatting with a friend.</p>
+      </div>
+      <div class="dm-active hidden" id="dm-active">
+        <div class="dm-chat-header">
+          <div class="dm-chat-header-av" id="dm-hdr-av">AK</div>
+          <div>
+            <div class="dm-chat-header-name" id="dm-hdr-name">Amira Khan</div>
+            <div class="dm-chat-header-status" id="dm-hdr-status">Online</div>
+          </div>
+        </div>
+        <div class="dm-messages" id="dm-messages"></div>
+        <div class="dm-input-bar">
+          <input type="text" class="dm-text-input" id="dm-input" placeholder="Message...">
+          <button class="dm-send-btn" id="dm-send">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script src="/js/layout.js"></script>
+<script src="/js/messages.js"></script>
+</body>
+</html>

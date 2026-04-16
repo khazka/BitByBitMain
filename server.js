@@ -13,6 +13,8 @@ app.get('/notes',     (req, res) => res.sendFile(path.join(__dirname, 'public/pa
 app.get('/chat',      (req, res) => res.sendFile(path.join(__dirname, 'public/pages/chat.html')));
 app.get('/profile',   (req, res) => res.sendFile(path.join(__dirname, 'public/pages/profile.html')));
 app.get('/ai',        (req, res) => res.sendFile(path.join(__dirname, 'public/pages/ai.html')));
+app.get('/friends',   (req, res) => res.sendFile(path.join(__dirname, 'public/pages/friends.html')));
+app.get('/messages',  (req, res) => res.sendFile(path.join(__dirname, 'public/pages/messages.html')));
 app.get('/premium',   (req, res) => res.sendFile(path.join(__dirname, 'public/pages/premium.html')));
 
 app.listen(PORT, () => {

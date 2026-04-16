@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friend Activity — bitBuddy</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <style>
+    .friends-layout {
+      flex: 1; display: flex; overflow: hidden;
+      height: calc(100vh - var(--nav-height));
+    }
+    .friends-sidebar {
+      width: 240px; background: var(--surface-raised);
+      border-right: 1px solid var(--gray-mid);
+      display: flex; flex-direction: column;
+      flex-shrink: 0; overflow: hidden;
+    }
+    .friends-sidebar-header {
+      padding: 16px 14px 12px;
+      border-bottom: 1px solid var(--gray-mid); flex-shrink: 0;
+    }
+    .friends-sidebar-header h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 13.5px; font-weight: 800;
+      color: var(--text-main); margin-bottom: 10px;
+    }
+    .friends-search { position: relative; }
+    .friends-search svg {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      width: 13px; height: 13px; color: var(--text-faint); pointer-events: none;
+    }
+    .friends-search input {
+      width: 100%; padding: 7px 10px 7px 30px;
+      border-radius: 10px; border: 1.5px solid var(--gray);
+      background: var(--gray-light);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; color: var(--text-main); outline: none;
+      transition: border-color var(--t-base), box-shadow var(--t-base);
+    }
+    .friends-search input:focus {
+      border-color: var(--primary); background: white;
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .friends-search input::placeholder { color: var(--text-faint); }
+    .friends-list { flex: 1; overflow-y: auto; padding: 8px 0; }
+    .friend-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; cursor: pointer;
+      border-radius: 10px; margin: 1px 8px;
+      transition: background var(--t-fast);
+    }
+    .friend-row:hover { background: var(--gray-light); }
+    .friend-row.active { background: var(--primary-subtle); }
+    .fr-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: white;
+      flex-shrink: 0; position: relative;
+    }
+    .online-dot {
+      position: absolute; bottom: 1px; right: 1px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: #22c55e; border: 2px solid var(--surface-raised);
+    }
+    .offline-dot {
+      position: absolute; bottom: 1px; right: 1px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--gray-dark); border: 2px solid var(--surface-raised);
+    }
+    .fr-info { flex: 1; min-width: 0; }
+    .fr-name { font-size: 13px; font-weight: 600; color: var(--text-main); }
+    .fr-sub  { font-size: 11px; color: var(--text-faint); margin-top: 1px; }
+    .fr-sub.online { color: #22c55e; font-weight: 500; }
+
+    /* Main */
+    .friends-main { flex: 1; overflow-y: auto; padding: 28px 32px; }
+    .friends-main-title {
+      font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 800;
+      color: var(--text-main); letter-spacing: -0.3px; margin-bottom: 4px;
+    }
+    .friends-main-sub { font-size: 13.5px; color: var(--text-muted); margin-bottom: 28px; }
+    .day-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.2px; color: var(--text-faint);
+      font-family: 'Sora', sans-serif; margin-bottom: 12px; margin-top: 22px;
+    }
+    .day-label:first-child { margin-top: 0; }
+    .activity-card {
+      background: var(--white); border-radius: 14px;
+      border: 1px solid var(--gray-mid); padding: 14px 16px;
+      margin-bottom: 10px; display: flex; gap: 12px;
+      box-shadow: var(--shadow); animation: fadeUp 0.25s ease;
+      transition: transform var(--t-slow), box-shadow var(--t-slow);
+    }
+    .activity-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .ac-av {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0;
+    }
+    .ac-body { flex: 1; }
+    .ac-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+    .ac-name   { font-size: 13px; font-weight: 700; color: var(--text-main); }
+    .ac-action { font-size: 13px; color: var(--text-muted); }
+    .ac-time   { font-size: 11px; color: var(--text-faint); margin-left: auto; }
+    .ac-text   { font-size: 13px; color: var(--text-sub); line-height: 1.55; margin-bottom: 8px; }
+    .ac-tags   { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .ac-tag    { padding: 3px 10px; border-radius: 50px; background: var(--primary-subtle); font-size: 11px; font-weight: 600; color: var(--primary-dark); }
+    .ac-stat   { font-size: 11.5px; color: var(--text-faint); display: flex; align-items: center; gap: 4px; }
+    .ac-stat svg { width: 11px; height: 11px; }
+  </style>
+</head>
+<body>
+<div id="app-shell">
+  <div class="friends-layout">
+    <div class="friends-sidebar">
+      <div class="friends-sidebar-header">
+        <h3>Friends</h3>
+        <div class="friends-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="friend-filter" placeholder="Search friends...">
+        </div>
+      </div>
+      <div class="friends-list">
+        <div class="friend-row active" data-name="amira khan">
+          <div class="fr-avatar" style="background:#5b7fa8;">AK<div class="online-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Amira Khan</div><div class="fr-sub online">Studying Physics</div></div>
+        </div>
+        <div class="friend-row" data-name="liam scott">
+          <div class="fr-avatar" style="background:#a87c5b;">LS<div class="online-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Liam Scott</div><div class="fr-sub online">In Study Chat</div></div>
+        </div>
+        <div class="friend-row" data-name="priya osei">
+          <div class="fr-avatar" style="background:#609F8A;">PO<div class="offline-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Priya Osei</div><div class="fr-sub">Last seen 2h ago</div></div>
+        </div>
+        <div class="friend-row" data-name="tyler mason">
+          <div class="fr-avatar" style="background:#2d6e5e;">TM<div class="offline-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Tyler Mason</div><div class="fr-sub">Last seen yesterday</div></div>
+        </div>
+        <div class="friend-row" data-name="sofia rahman">
+          <div class="fr-avatar" style="background:#7b6aa8;">SR<div class="online-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Sofia Rahman</div><div class="fr-sub online">Taking notes</div></div>
+        </div>
+        <div class="friend-row" data-name="jake brennan">
+          <div class="fr-avatar" style="background:#4a8a9e;">JB<div class="offline-dot"></div></div>
+          <div class="fr-info"><div class="fr-name">Jake Brennan</div><div class="fr-sub">Last seen 3 days ago</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="friends-main">
+      <div class="friends-main-title">Friend Activity</div>
+      <div class="friends-main-sub">See what your friends have been up to</div>
+
+      <div class="day-label">Today</div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#5b7fa8;">AK</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Amira Khan</span><span class="ac-action">posted a question</span><span class="ac-time">2h ago</span></div>
+          <div class="ac-text">"Can someone explain Newton's 3rd Law with a real example?"</div>
+          <div class="ac-tags"><span class="ac-tag">Physics</span><span class="ac-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>47 upvotes</span><span class="ac-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>23 replies</span></div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#a87c5b;">LS</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Liam Scott</span><span class="ac-action">shared a study tip</span><span class="ac-time">5h ago</span></div>
+          <div class="ac-text">"The trick for solving quadratics my teacher never taught me..."</div>
+          <div class="ac-tags"><span class="ac-tag">Maths</span><span class="ac-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>128 upvotes</span></div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#7b6aa8;">SR</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Sofia Rahman</span><span class="ac-action">saved a note</span><span class="ac-time">6h ago</span></div>
+          <div class="ac-text">📝 "Cell Biology — Mitosis vs Meiosis" · 3 pages</div>
+          <div class="ac-tags"><span class="ac-tag">Biology</span></div>
+        </div>
+      </div>
+
+      <div class="day-label">Yesterday</div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#609F8A;">PO</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Priya Osei</span><span class="ac-action">asked in Study Chat</span><span class="ac-time">Yesterday</span></div>
+          <div class="ac-text">"Best Macbeth quote covering ambition AND guilt for my essay intro?"</div>
+          <div class="ac-tags"><span class="ac-tag">English</span><span class="ac-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18,15 12,9 6,15"/></svg>89 upvotes</span></div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#2d6e5e;">TM</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Tyler Mason</span><span class="ac-action">completed a classroom</span><span class="ac-time">Yesterday</span></div>
+          <div class="ac-text">🎓 Finished "Introduction to Algorithms" · 100% complete</div>
+          <div class="ac-tags"><span class="ac-tag">Computer Science</span></div>
+        </div>
+      </div>
+      <div class="activity-card">
+        <div class="ac-av" style="background:#4a8a9e;">JB</div>
+        <div class="ac-body">
+          <div class="ac-top"><span class="ac-name">Jake Brennan</span><span class="ac-action">hit a milestone</span><span class="ac-time">2 days ago</span></div>
+          <div class="ac-text">🔥 Jake hit a <strong>14-day study streak!</strong></div>
+          <div class="ac-tags"><span class="ac-tag">Chemistry</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/layout.js"></script>
+<script src="/js/friends.js"></script>
+</body>
+</html>

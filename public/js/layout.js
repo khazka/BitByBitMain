@@ -25,6 +25,18 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
       icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`
     },
     {
+      id: 'friends',
+      label: 'Friend Activity',
+      href: '/friends',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`
+    },
+    {
+      id: 'messages',
+      label: 'Messages',
+      href: '/messages',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`
+    },
+    {
       id: 'ai',
       label: 'AI Assistant',
       href: '/ai',
@@ -141,7 +153,7 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
   }
 
   // Pages that need full-height zero-padding layout
-  const fullHeightPages = ['ai', 'chat', 'notes'];
+  const fullHeightPages = ['ai', 'chat', 'notes', 'friends', 'messages'];
   const isFullHeight = fullHeightPages.includes(activeNav);
 
   const pageContentStyle = isFullHeight
