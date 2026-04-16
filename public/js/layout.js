@@ -43,10 +43,10 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
 
   const sidebarHTML = `
     <aside class="sidebar">
-      <div class="sidebar-logo">
+      <a href="/space" class="sidebar-logo" style="text-decoration:none;">
         <div class="bb-icon" style="width:36px;height:36px;font-size:14px;border-radius:10px;">bb</div>
         <div class="name">bit<em>Buddy</em></div>
-      </div>
+      </a>
 
       <div class="sidebar-section-label">Main</div>
       <ul class="sidebar-nav">${navHTML}</ul>
@@ -65,7 +65,7 @@ function initLayout({ title = 'bitBuddy', activeNav = '' } = {}) {
 
   const topnavHTML = `
     <nav class="topnav">
-      <span class="topnav-title">${title}</span>
+      <a href="/space" class="topnav-title" style="text-decoration:none;color:inherit;">${title}</a>
       <div class="search-bar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="7"/>
